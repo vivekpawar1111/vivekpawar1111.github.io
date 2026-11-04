@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus Pharma · UI template kit</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .page { width: auto; max-width: 1400px; margin: 0 auto; }
+  .masthead {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 26px;
+    align-items: stretch;
+    margin-bottom: 30px;
+  }
+  .mast-copy { padding: 14px 0; }
+  .mast-copy h1 { font-size: 44px; line-height: 1.02; letter-spacing: -.04em; margin: 0; font-weight: 800; }
+  .mast-copy h1 em { font-style: normal; color: var(--xp-accent); }
+  .mast-copy p { font-size: 13px; font-weight: 500; color: var(--muted); line-height: 1.65; max-width: 560px; margin: 16px 0 0; }
+  .mast-card {
+    border-radius: 28px;
+    border: 1px solid #f4ded2;
+    background:
+      radial-gradient(240px 240px at 100% 0%, rgba(249,144,111,.6), transparent 70%),
+      radial-gradient(220px 220px at 60% 100%, rgba(124,99,242,.28), transparent 72%),
+      linear-gradient(112deg,#fff4ee 0%,#f9d8c8 58%,#e1d7fb 100%);
+    padding: 22px;
+    box-shadow: var(--xp-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .mast-card .quote { font-size: 15px; font-weight: 800; line-height: 1.4; letter-spacing: -.02em; }
+  .mast-card .meta { font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #7d6659; }
+  .token-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .tok { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.9); border-radius: 99px; padding: 6px 10px; font-size: 9px; font-weight: 800; }
+  .tok i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+  .tile {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--xp-card-border);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -30px rgba(88,51,30,.55);
+  }
+  .tile.big { grid-column: span 7; }
+  .tile.mid { grid-column: span 5; }
+  .tile.third { grid-column: span 4; }
+  .tile.half { grid-column: span 6; }
+  .thumb { height: 300px; overflow: hidden; background: #f0e8e1; border-bottom: 1px solid var(--xp-card-border); }
+  .thumb img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top left; }
+  .tile.big .thumb { height: 330px; }
+  .tile-copy { padding: 16px 18px 18px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .tile-copy .n { font-size: 9px; font-weight: 800; letter-spacing: .12em; color: var(--xp-accent); }
+  .tile-copy .t { font-size: 15px; font-weight: 800; letter-spacing: -.02em; margin-top: 3px; }
+  .tile-copy .d { font-size: 10px; font-weight: 500; color: var(--muted); line-height: 1.5; margin-top: 5px; max-width: 330px; }
+  .tile-copy .go { width: 30px; height: 30px; border-radius: 50%; background: var(--xp-accent-soft); color: var(--xp-accent); display: grid; place-items: center; flex: none; }
+
+  .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+  .principle { background: #fff; border: 1px solid var(--xp-card-border); border-radius: 20px; padding: 15px; }
+  .principle .pi { width: 30px; height: 30px; border-radius: 10px; background: var(--xp-tint-red); color: var(--xp-accent); display: grid; place-items: center; }
+  .principle .pt { font-size: 11px; font-weight: 800; margin-top: 9px; }
+  .principle .pd { font-size: 9.5px; font-weight: 500; color: var(--muted); line-height: 1.55; margin-top: 4px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding-top: 16px; border-top: 1px solid #e8dcd2; font-size: 9.5px; font-weight: 700; color: var(--muted); }
+
+  /* ---------- Direction B block ---------- */
+  .b-head { margin: 46px 0 20px; padding-top: 34px; border-top: 1px solid #dde4ea; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .b-head .eyebrow { color: #0e7c66; font-size: 9.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .b-head h2 { margin: 8px 0 0; font-size: 32px; line-height: 1.04; letter-spacing: -.04em; font-weight: 700; color: #101828; }
+  .b-head h2 span { color: #0e7c66; }
+  .b-head p { margin: 10px 0 0; font-size: 12.5px; line-height: 1.65; color: #667085; max-width: 620px; }
+  .b-badge { flex: none; font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #0e7c66; background: #f2faf8; border: 1px solid #b9d8d1; border-radius: 6px; padding: 7px 11px; }
+  .b-tokens { margin-top: 14px; }
+  .b-tokens .tok { background: #fff; border-color: #dde4ea; border-radius: 6px; color: #667085; font-weight: 600; font-family: ui-monospace, Consolas, monospace; font-size: 9px; }
+  .b-tokens .tok i { border-radius: 2px; }
+  .b-tile { grid-column: span 12; border-radius: 14px; border-color: #dde4ea; box-shadow: 0 20px 44px -36px rgba(16,24,40,.5); }
+  .b-tile .thumb { height: 430px; background: #eef1f4; border-bottom-color: #dde4ea; }
+  .b-tile .tile-copy .n { color: #0e7c66; }
+  .b-tile .tile-copy .go { background: #e7f4f1; color: #0e7c66; }
+  .b-principles .principle { border-radius: 10px; border-color: #dde4ea; }
+  .b-principles .principle .pi { border-radius: 6px; background: #e7f4f1; color: #0e7c66; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="masthead">
+    <div class="mast-copy">
+      <div class="eyebrow">CarePlus Pharma · UI template kit</div>
+      <h1>Warm, <em>expressive</em><br />pharmacy ERP.</h1>
+      <p>A mock template set built from the app's real design tokens: cream canvas, white cards, coral primary actions, M3 lavender navigation, Plus Jakarta Sans and 20–30px radii. Use these boards as the visual reference for new dashboards, pages, sections and popups — then compare with Direction B, a cooler instrument-like language, at the bottom of this page.</p>
+      <div class="flex gap-8 mt-14" style="flex-wrap:wrap">
+        <span class="btn primary"><i data-lucide="layout-dashboard" class="i14"></i> 6 boards · 2 directions</span>
+        <span class="btn ghost"><i data-lucide="smartphone" class="i14"></i> APK + Web variants</span>
+      </div>
+    </div>
+    <div class="mast-card">
+      <div>
+        <div class="meta">Design language</div>
+        <div class="quote">Every module shares one canvas: a white page, warm cards and a single coral action.</div>
+      </div>
+      <div class="token-row">
+        <span class="tok"><i style="background:#e4553c"></i>#E4553C</span>
+        <span class="tok"><i style="background:#fdf7f2"></i>#FDF7F2</span>
+        <span class="tok"><i style="background:#7c63f2"></i>#7C63F2</span>
+        <span class="tok"><i style="background:#6750a4"></i>#6750A4</span>
+        <span class="tok"><i style="background:#2fae6e"></i>#2FAE6E</span>
+        <span class="tok"><i style="background:#241d19"></i>#241D19</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="tile big" href="01-dashboard.html">
+      <div class="thumb"><img src="preview-01-dashboard.png" alt="Dashboard templates" style="object-position:left 24%" /></div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">01 · DASHBOARD</div>
+          <div class="t">Dashboard templates</div>
+          <div class="d">Cream-to-lilac hero, 2 × 2 portrait APK tiles, 4-up landscape web tiles, KPI cards and the invoice feed.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+
+    <a class="tile mid" href="02-pages.html">
+      <div class="thumb" style="height:330px"><img src="preview-02-pages.png" alt="Page templates" style="object-position:left 36%" /></div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">02 · PAGES</div>
+          <div class="t">Page templates</div>
+          <div class="d">List pages, filters, stat strips, data tables, mobile record cards and a PO detail screen.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+
+    <a class="tile half" href="03-sections.html">
+      <div class="thumb" style="height:280px"><img src="preview-03-sections.png" alt="Section templates" style="object-position:left 30%" /></div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">03 · SECTIONS</div>
+          <div class="t">Section &amp; subsection templates</div>
+          <div class="d">Detail-page anatomy: summary hero, tabs, section cards, tinted subsections and collapsible mobile panels.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+
+    <a class="tile half" href="04-popups.html">
+      <div class="thumb" style="height:280px"><img src="preview-04-popups.png" alt="Popup templates" style="object-position:left 14%" /></div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">04 · POPUPS</div>
+          <div class="t">Popup &amp; overlay templates</div>
+          <div class="d">All-modules glass menu, global search, delete confirm, form modal, toast, empty state and action sheet.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+
+    <a class="tile third" href="05-components.html" style="grid-column: span 12">
+      <div class="thumb" style="height:300px"><img src="preview-05-components.png" alt="Component library" style="object-position:left 26%" /></div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">05 · COMPONENTS</div>
+          <div class="t">Component library</div>
+          <div class="d">Colour, type, buttons, inputs, badges, icon set, shape, elevation and feedback states — the raw ingredients for any new screen.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="principles">
+    <div class="principle">
+      <div class="pi"><i data-lucide="paintbrush" class="i16"></i></div>
+      <div class="pt">One coral action</div>
+      <div class="pd">Each screen has a single filled coral button. Secondary actions are ghost pills or quiet icon circles.</div>
+    </div>
+    <div class="principle">
+      <div class="pi" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="layers" class="i16"></i></div>
+      <div class="pt">White page, warm cards</div>
+      <div class="pd">Modules sit on white; cards carry #F1E6DC borders, 26px radii and one soft shadow — never heavy elevation.</div>
+    </div>
+    <div class="principle">
+      <div class="pi" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="smartphone" class="i16"></i></div>
+      <div class="pt">Target-aware layout</div>
+      <div class="pd">APK gets 2 × 2 portrait credit-card tiles; web gets one row of four landscape tiles. Same tokens, different density.</div>
+    </div>
+    <div class="principle">
+      <div class="pi" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="accessibility" class="i16"></i></div>
+      <div class="pt">Readable by default</div>
+      <div class="pd">Dark ink #241D19 on white, 9px minimum labels in 800 weight, tabular numerals for every amount.</div>
+    </div>
+  </div>
+
+  <div class="b-head">
+    <div>
+      <div class="eyebrow">Design language 02 · alternate</div>
+      <h2>Direction B — <span>Clinical Clarity.</span></h2>
+      <p>A cooler counter-proposal for the same ERP: apothecary teal, navy ink, 6–12px radii, no gradients, mono numerals, a persistent web sidebar and a table-first density.</p>
+      <div class="token-row b-tokens">
+        <span class="tok"><i style="background:#0e7c66"></i>#0E7C66</span>
+        <span class="tok"><i style="background:#14324f"></i>#14324F</span>
+        <span class="tok"><i style="background:#101828"></i>#101828</span>
+        <span class="tok"><i style="background:#f4f6f8"></i>#F4F6F8</span>
+        <span class="tok"><i style="background:#175cd3"></i>#175CD3</span>
+        <span class="tok"><i style="background:#b54708"></i>#B54708</span>
+        <span class="tok">Inter + mono</span>
+      </div>
+    </div>
+    <div class="b-badge">Design language 02</div>
+  </div>
+
+  <div class="grid">
+    <a class="tile b-tile" href="06-clinical.html">
+      <div class="thumb">
+        <img src="preview-06-clinical.png" alt="Direction B — Clinical Clarity" style="object-position:left 13%" />
+      </div>
+      <div class="tile-copy">
+        <div>
+          <div class="n">06 · CLINICAL CLARITY</div>
+          <div class="t">Direction B board — all four views</div>
+          <div class="d">Web shell with persistent sidebar, mobile dashboard, purchase list, table page with receive-stock sheet and the Direction B primitives.</div>
+        </div>
+        <span class="go"><i data-lucide="arrow-up-right" class="i14"></i></span>
+      </div>
+    </a>
+  </div>
+
+  <div class="principles b-principles">
+    <div class="principle">
+      <div class="pi"><i data-lucide="square" class="i16"></i></div>
+      <div class="pt">Tight geometry</div>
+      <div class="pd">6px controls, 8–10px cards, 14px app frame. No 26px radii, no floating pills.</div>
+    </div>
+    <div class="principle">
+      <div class="pi"><i data-lucide="ruler" class="i16"></i></div>
+      <div class="pt">Flat elevation</div>
+      <div class="pd">Borders carry structure; shadows are removed except the single app-frame drop.</div>
+    </div>
+    <div class="principle">
+      <div class="pi"><i data-lucide="calculator" class="i16"></i></div>
+      <div class="pt">Mono numerals</div>
+      <div class="pd">Every amount, batch and date uses monospace digits so columns align down the table.</div>
+    </div>
+    <div class="principle">
+      <div class="pi"><i data-lucide="table-2" class="i16"></i></div>
+      <div class="pt">Table-first density</div>
+      <div class="pd">Lists are data tables on web, status-led cards on mobile — same information, different frame.</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>CarePlus Pharma · UI template kit · November 2026</span>
+    <span>Direction A tokens from src/index.css · Direction B tokens documented in README.md</span>
+  </div>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

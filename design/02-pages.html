@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Page templates</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .phone-list { display: flex; gap: 34px; align-items: flex-start; }
+  .frame-label { text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+  .stack { display: flex; flex-direction: column; }
+  .filter-row { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+  .filter-row .searchbar { flex: 1; min-width: 190px; }
+  .stat-strip.four { grid-template-columns: repeat(4, 1fr); }
+  .mini-stat .lbl { font-size: 8px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+  .po-cell { display: flex; align-items: center; gap: 9px; }
+  .po-mark { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--xp-tint-red); color: var(--xp-accent); flex: none; }
+  .sub-line { font-size: 8.5px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+  .mobile-card { border-radius: 20px; border: 1px solid var(--xp-card-border); background: #fff; padding: 13px; box-shadow: 0 10px 26px -24px rgba(88,51,30,.5); }
+  .mobile-card + .mobile-card { margin-top: 9px; }
+  .po-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .po-num { font-size: 10.5px; font-weight: 800; letter-spacing: -0.01em; }
+  .po-supp { font-size: 9.5px; font-weight: 600; color: var(--muted); margin-top: 2px; }
+  .po-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 9px; border-top: 1px dashed #f2e7dd; }
+  .po-amt { font-size: 13px; font-weight: 800; letter-spacing: -0.02em; }
+  .progress { margin-top: 8px; }
+  .fab { position: absolute; right: 18px; bottom: 92px; width: 52px; height: 52px; border-radius: 18px; background: var(--xp-accent); color: #fff; display: grid; place-items: center; box-shadow: 0 16px 30px -12px rgba(228,85,60,.8); }
+  .inv-row { display: flex; align-items: center; gap: 9px; padding: 8px 0; border-bottom: 1px solid #f7f1eb; }
+  .inv-row:last-child { border-bottom: 0; }
+  .inv-ico { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+  .inv-name { font-size: 10px; font-weight: 800; line-height: 1.15; }
+  .inv-meta { font-size: 8px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">CarePlus Pharma · UI system</div>
+      <h1 class="page-title">Page templates</h1>
+      <p class="page-sub">Directory and list pages share one anatomy: breadcrumb, page header with a single coral primary action, a filter bar, a compact stat strip, then either a data table (web) or stacked record cards (APK).</p>
+    </div>
+    <div class="board-tag">02 / 05</div>
+  </div>
+
+  <!-- ============ WEB LIST PAGE ============ -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">03</span>
+      <span class="board-title">List page · New Purchase Orders</span>
+      <span class="board-tag">Web</span>
+      <span class="board-note">1280 × 730 · header, filters, stats, table, pagination</span>
+    </div>
+
+    <div class="desktop" style="height:730px">
+      <div class="desktop-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="desktop-url">app.careplus.pharma / purchase-orders</span>
+      </div>
+      <div class="desktop-body">
+        <div class="app-topbar" style="padding-bottom:10px">
+          <div class="brand">
+            <span class="brand-mark" style="width:34px;height:34px"><i data-lucide="pill" class="i18"></i></span>
+            <span><span class="brand-name">CarePlus</span><br /><span class="brand-sub">Pharma ERP</span></span>
+          </div>
+          <div class="flex gap-10">
+            <span class="chip green"><i data-lucide="wifi" class="i14"></i> Synced</span>
+            <span class="icon-btn"><i data-lucide="bell" class="i16"></i></span>
+            <span class="avatar" style="background:var(--xp-ink);color:#fff">VP</span>
+          </div>
+        </div>
+
+        <div class="breadcrumb"><span>Purchase</span><i data-lucide="chevron-right" class="i14"></i><b>Purchase Orders</b></div>
+
+        <div class="page-head-row">
+          <div class="flex gap-10" style="align-items:flex-start">
+            <span class="back-btn"><i data-lucide="arrow-left" class="i16"></i></span>
+            <div>
+              <h2 class="h2">New Purchase Orders</h2>
+              <p class="tiny muted" style="margin:5px 0 0">Raise POs, track delivery and receive stock against the supplier bill.</p>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <span class="btn ghost"><i data-lucide="download" class="i14"></i> Export</span>
+            <span class="btn primary"><i data-lucide="plus" class="i14"></i> New Purchase Order</span>
+          </div>
+        </div>
+
+        <div class="stat-strip four mt-14">
+          <div class="mini-stat">
+            <div class="lbl">Open POs</div>
+            <div class="v">12 <span class="tiny muted" style="font-weight:600">· ₹3,42,800</span></div>
+          </div>
+          <div class="mini-stat">
+            <div class="lbl">Partially received</div>
+            <div class="v">4 <span class="tiny muted" style="font-weight:600">· 9 lines pending</span></div>
+          </div>
+          <div class="mini-stat">
+            <div class="lbl">Awaiting delivery</div>
+            <div class="v">7 <span class="tiny muted" style="font-weight:600">· 3 due today</span></div>
+          </div>
+          <div class="mini-stat">
+            <div class="lbl">Raised this month</div>
+            <div class="v">28 <span class="chip green" style="margin-left:4px">+9</span></div>
+          </div>
+        </div>
+
+        <div class="filter-row mt-14">
+          <div class="searchbar"><i data-lucide="search" class="i16"></i> Search PO number, supplier or product…</div>
+          <span class="pill-filter on">All <b style="opacity:.6">12</b></span>
+          <span class="pill-filter">Draft</span>
+          <span class="pill-filter">Sent</span>
+          <span class="pill-filter">Partial</span>
+          <span class="pill-filter">Received</span>
+          <span class="segmented" style="margin-left:auto">
+            <span class="on">Month</span><span>Quarter</span><span>Year</span>
+          </span>
+          <span class="icon-round"><i data-lucide="sliders-horizontal" class="i14"></i></span>
+        </div>
+
+        <div class="card flush mt-14">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Purchase order</th>
+                <th>Supplier</th>
+                <th class="right">Items</th>
+                <th class="right">Value</th>
+                <th>Expected</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="po-cell">
+                    <span class="po-mark"><i data-lucide="clipboard-list" class="i14"></i></span>
+                    <div><div class="strong">PO-2026-0148</div><div class="sub-line">4 Nov 2026 · 14 lines</div></div>
+                  </div>
+                </td>
+                <td><div class="strong" style="font-weight:700">MedPlus Distributors</div><div class="sub-line">GSTIN 27AABCM1234F1Z2</div></td>
+                <td class="right num">14</td>
+                <td class="right strong num">₹1,42,800</td>
+                <td>6 Nov</td>
+                <td><span class="chip amber">Partially received</span></td>
+                <td>
+                  <div class="row-actions">
+                    <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                    <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                    <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="po-cell">
+                    <span class="po-mark" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="clipboard-list" class="i14"></i></span>
+                    <div><div class="strong">PO-2026-0147</div><div class="sub-line">3 Nov 2026 · 8 lines</div></div>
+                  </div>
+                </td>
+                <td><div class="strong" style="font-weight:700">Sanjivani Agencies</div><div class="sub-line">GSTIN 27AAECS5678G1Z9</div></td>
+                <td class="right num">8</td>
+                <td class="right strong num">₹68,450</td>
+                <td>5 Nov</td>
+                <td><span class="chip blue">Sent</span></td>
+                <td>
+                  <div class="row-actions">
+                    <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                    <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                    <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="po-cell">
+                    <span class="po-mark" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="clipboard-list" class="i14"></i></span>
+                    <div><div class="strong">PO-2026-0146</div><div class="sub-line">2 Nov 2026 · 21 lines</div></div>
+                  </div>
+                </td>
+                <td><div class="strong" style="font-weight:700">Carewell Pharma</div><div class="sub-line">GSTIN 27AACCC9012H1Z4</div></td>
+                <td class="right num">21</td>
+                <td class="right strong num">₹2,18,900</td>
+                <td>7 Nov</td>
+                <td><span class="chip green">Received</span></td>
+                <td>
+                  <div class="row-actions">
+                    <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                    <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                    <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="po-cell">
+                    <span class="po-mark" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="clipboard-list" class="i14"></i></span>
+                    <div><div class="strong">PO-2026-0145</div><div class="sub-line">1 Nov 2026 · 6 lines</div></div>
+                  </div>
+                </td>
+                <td><div class="strong" style="font-weight:700">Global Medico</div><div class="sub-line">GSTIN 27AAFCG3456K1Z7</div></td>
+                <td class="right num">6</td>
+                <td class="right strong num">₹39,600</td>
+                <td>9 Nov</td>
+                <td><span class="chip grey">Draft</span></td>
+                <td>
+                  <div class="row-actions">
+                    <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                    <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                    <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="po-cell">
+                    <span class="po-mark"><i data-lucide="clipboard-list" class="i14"></i></span>
+                    <div><div class="strong">PO-2026-0144</div><div class="sub-line">30 Oct 2026 · 17 lines</div></div>
+                  </div>
+                </td>
+                <td><div class="strong" style="font-weight:700">Ashirwad Medicals</div><div class="sub-line">GSTIN 27AAJCA7890L1Z3</div></td>
+                <td class="right num">17</td>
+                <td class="right strong num">₹96,250</td>
+                <td>2 Nov</td>
+                <td><span class="chip red">Overdue</span></td>
+                <td>
+                  <div class="row-actions">
+                    <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                    <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                    <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="flex between" style="padding:11px 14px;border-top:1px solid var(--xp-card-border)">
+            <span class="tiny muted">Showing 1–5 of 28 purchase orders</span>
+            <div class="pager">
+              <span class="box"><i data-lucide="chevron-left" class="i14"></i></span>
+              <span class="on">1</span><span>2</span><span>3</span><span>…</span><span>6</span>
+              <span class="box"><i data-lucide="chevron-right" class="i14"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOBILE LIST PAGE ============ -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">04</span>
+      <span class="board-title">List page · mobile record cards</span>
+      <span class="board-tag">APK</span>
+      <span class="board-note">390 × 844 · search, filter chips, progress-aware cards</span>
+    </div>
+
+    <div class="phone-list">
+      <div class="stack">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="statusbar">
+              <span>9:41</span>
+              <span class="right"><i data-lucide="signal" class="i14"></i><i data-lucide="wifi" class="i14"></i><i data-lucide="battery-full" class="i16"></i></span>
+            </div>
+            <div class="phone-body" style="padding-top:2px">
+              <div class="flex between" style="padding:2px 0 14px">
+                <div class="flex gap-10">
+                  <span class="back-btn"><i data-lucide="arrow-left" class="i16"></i></span>
+                  <div>
+                    <h3 class="h3">Purchase Orders</h3>
+                    <div class="micro muted" style="margin-top:2px">12 open · ₹3,42,800</div>
+                  </div>
+                </div>
+                <span class="icon-round red"><i data-lucide="plus" class="i16"></i></span>
+              </div>
+
+              <div class="searchbar"><i data-lucide="search" class="i16"></i> Search PO, supplier or product…</div>
+
+              <div class="flex gap-6 mt-10" style="overflow:hidden">
+                <span class="pill-filter on">All</span>
+                <span class="pill-filter">Draft</span>
+                <span class="pill-filter">Sent</span>
+                <span class="pill-filter soft">Partial</span>
+              </div>
+
+              <div class="grid-2 mt-14">
+                <div class="card tight" style="border-radius:18px;padding:12px">
+                  <div class="micro muted" style="letter-spacing:.08em">OPEN VALUE</div>
+                  <div class="h2 num" style="font-size:17px;margin-top:4px">₹3,42,800</div>
+                </div>
+                <div class="card tight" style="border-radius:18px;padding:12px">
+                  <div class="micro muted" style="letter-spacing:.08em">DUE THIS WEEK</div>
+                  <div class="h2 num" style="font-size:17px;margin-top:4px">7 <span class="chip amber">3 today</span></div>
+                </div>
+              </div>
+
+              <div class="mt-14">
+                <div class="mobile-card">
+                  <div class="po-head">
+                    <div>
+                      <div class="po-num">PO-2026-0148</div>
+                      <div class="po-supp">MedPlus Distributors · 14 lines</div>
+                    </div>
+                    <span class="chip amber">Partial</span>
+                  </div>
+                  <div class="progress"><i style="width:62%"></i></div>
+                  <div class="po-foot">
+                    <span class="tiny muted">9 of 14 received · due 6 Nov</span>
+                    <span class="po-amt">₹1,42,800</span>
+                  </div>
+                </div>
+
+                <div class="mobile-card">
+                  <div class="po-head">
+                    <div>
+                      <div class="po-num">PO-2026-0147</div>
+                      <div class="po-supp">Sanjivani Agencies · 8 lines</div>
+                    </div>
+                    <span class="chip blue">Sent</span>
+                  </div>
+                  <div class="progress"><i style="width:0%"></i></div>
+                  <div class="po-foot">
+                    <span class="tiny muted">Awaiting dispatch · due 5 Nov</span>
+                    <span class="po-amt">₹68,450</span>
+                  </div>
+                </div>
+
+                <div class="mobile-card">
+                  <div class="po-head">
+                    <div>
+                      <div class="po-num">PO-2026-0146</div>
+                      <div class="po-supp">Carewell Pharma · 21 lines</div>
+                    </div>
+                    <span class="chip green">Received</span>
+                  </div>
+                  <div class="progress"><i style="width:100%;background:var(--xp-green)"></i></div>
+                  <div class="po-foot">
+                    <span class="tiny muted">Fully received · 2 Nov</span>
+                    <span class="po-amt">₹2,18,900</span>
+                  </div>
+                </div>
+
+                <div class="mobile-card">
+                  <div class="po-head">
+                    <div>
+                      <div class="po-num">PO-2026-0145</div>
+                      <div class="po-supp">Global Medico · 6 lines</div>
+                    </div>
+                    <span class="chip grey">Draft</span>
+                  </div>
+                  <div class="progress"><i style="width:0%"></i></div>
+                  <div class="po-foot">
+                    <span class="tiny muted">Not sent yet · created 1 Nov</span>
+                    <span class="po-amt">₹39,600</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fab"><i data-lucide="plus" class="i24"></i></div>
+            <div class="bottomnav">
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="receipt-indian-rupee" class="i18"></i></span>Sales</span>
+              <span class="nav-search"><i data-lucide="search" class="i16"></i> Search…</span>
+              <span class="nav-item active"><span class="nav-ico"><i data-lucide="clipboard-list" class="i18"></i></span>Purchase</span>
+              <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="frame-label">Purchase Orders · mobile</div>
+      </div>
+
+      <!-- mobile detail -->
+      <div class="stack">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="statusbar">
+              <span>9:41</span>
+              <span class="right"><i data-lucide="signal" class="i14"></i><i data-lucide="wifi" class="i14"></i><i data-lucide="battery-full" class="i16"></i></span>
+            </div>
+            <div class="phone-body" style="padding-top:2px">
+              <div class="flex between" style="padding:2px 0 12px">
+                <div class="flex gap-10">
+                  <span class="back-btn"><i data-lucide="arrow-left" class="i16"></i></span>
+                  <div>
+                    <h3 class="h3">PO-2026-0148</h3>
+                    <div class="micro muted" style="margin-top:2px">MedPlus Distributors</div>
+                  </div>
+                </div>
+                <div class="flex gap-6">
+                  <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+                  <span class="icon-round"><i data-lucide="download" class="i14"></i></span>
+                </div>
+              </div>
+
+              <div class="card" style="background:linear-gradient(140deg,#fff7f2,#f7f0ff);border-color:#f3e2d8;padding:15px">
+                <div class="flex between">
+                  <span class="chip amber">Partially received</span>
+                  <span class="micro muted">Due 6 Nov</span>
+                </div>
+                <div class="h2 num" style="font-size:24px;margin-top:10px">₹1,42,800</div>
+                <div class="tiny muted" style="margin-top:3px">14 lines · 9 received · GST ₹21,782</div>
+                <div class="progress mt-10"><i style="width:62%"></i></div>
+              </div>
+
+              <div class="grid-2 mt-10">
+                <div class="card tight" style="border-radius:16px;padding:10px 12px">
+                  <div class="micro muted">SUPPLIER</div>
+                  <div class="tiny" style="font-weight:800;margin-top:3px">MedPlus Distributors</div>
+                  <div class="micro muted" style="font-weight:600">27AABCM1234F1Z2</div>
+                </div>
+                <div class="card tight" style="border-radius:16px;padding:10px 12px">
+                  <div class="micro muted">DELIVERY</div>
+                  <div class="tiny" style="font-weight:800;margin-top:3px">Main warehouse</div>
+                  <div class="micro muted" style="font-weight:600">By road · DTDC</div>
+                </div>
+              </div>
+
+              <div class="flex between mt-14">
+                <span class="h4">Line items</span>
+                <span class="micro" style="color:var(--xp-accent);font-weight:800">Receive stock</span>
+              </div>
+
+              <div class="card flush mt-6" style="border-radius:18px">
+                <div style="padding:11px 12px;border-bottom:1px solid #f7f1eb">
+                  <div class="flex between">
+                    <div class="tiny" style="font-weight:800">DOLO 650 TAB 10X10</div>
+                    <span class="chip green">9 / 10</span>
+                  </div>
+                  <div class="micro muted" style="margin-top:3px">Batch DL26A · Exp 08/28 · ₹95.00 / box</div>
+                  <div class="progress" style="margin-top:7px"><i style="width:90%;background:var(--xp-green)"></i></div>
+                </div>
+                <div style="padding:11px 12px;border-bottom:1px solid #f7f1eb">
+                  <div class="flex between">
+                    <div class="tiny" style="font-weight:800">AMOXICILLIN CAPS 20X10</div>
+                    <span class="chip amber">0 / 5</span>
+                  </div>
+                  <div class="micro muted" style="margin-top:3px">Batch AM26C · Exp 03/27 · ₹210.00 / box</div>
+                  <div class="progress" style="margin-top:7px"><i style="width:0%"></i></div>
+                </div>
+                <div style="padding:11px 12px">
+                  <div class="flex between">
+                    <div class="tiny" style="font-weight:800">ZINCOVIT TAB 10X10</div>
+                    <span class="chip green">10 / 10</span>
+                  </div>
+                  <div class="micro muted" style="margin-top:3px">Batch ZN26B · Exp 11/27 · ₹85.00 / box</div>
+                  <div class="progress" style="margin-top:7px"><i style="width:100%;background:var(--xp-green)"></i></div>
+                </div>
+              </div>
+
+              <div class="flex gap-8 mt-14">
+                <span class="btn ghost" style="flex:1"><i data-lucide="pencil" class="i14"></i> Edit</span>
+                <span class="btn primary" style="flex:1"><i data-lucide="package-check" class="i14"></i> Receive</span>
+              </div>
+
+              <div class="card tight mt-10">
+                <div class="h4" style="margin-bottom:4px">Delivery timeline</div>
+                <div class="inv-row" style="padding:7px 0">
+                  <span class="inv-ico" style="width:26px;height:26px;border-radius:9px;background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="check" class="i14"></i></span>
+                  <div style="flex:1;min-width:0"><div class="inv-name" style="font-size:9.5px">PO sent to supplier</div><div class="inv-meta">3 Nov · 10:12</div></div>
+                  <span class="micro muted">Done</span>
+                </div>
+                <div class="inv-row" style="padding:7px 0">
+                  <span class="inv-ico" style="width:26px;height:26px;border-radius:9px;background:var(--xp-tint-amber);color:#a86400"><i data-lucide="truck" class="i14"></i></span>
+                  <div style="flex:1;min-width:0"><div class="inv-name" style="font-size:9.5px">Partially received</div><div class="inv-meta">4 Nov · 16:40 · 9 of 14 lines</div></div>
+                  <span class="chip amber">Now</span>
+                </div>
+                <div class="inv-row" style="padding:7px 0;border-bottom:0">
+                  <span class="inv-ico" style="width:26px;height:26px;border-radius:9px;background:#f4f0ec;color:#a2948a"><i data-lucide="flag" class="i14"></i></span>
+                  <div style="flex:1;min-width:0"><div class="inv-name" style="font-size:9.5px">Balance expected</div><div class="inv-meta">6 Nov · 5 lines pending</div></div>
+                  <span class="micro muted">Next</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bottomnav">
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="receipt-indian-rupee" class="i18"></i></span>Sales</span>
+              <span class="nav-search"><i data-lucide="search" class="i16"></i> Search…</span>
+              <span class="nav-item active"><span class="nav-ico"><i data-lucide="clipboard-list" class="i18"></i></span>Purchase</span>
+              <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="frame-label">PO detail · mobile</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

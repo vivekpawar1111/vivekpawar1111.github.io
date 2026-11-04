@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Popup templates</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .pop-grid { display: grid; grid-template-columns: repeat(3, 442px); gap: 26px; align-items: start; }
+  .tile-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .tile-label .n { font-size: 8.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .tile-label .k { font-size: 9px; font-weight: 800; color: var(--xp-accent); background: var(--xp-accent-soft); border: 1px solid #f6d4c9; padding: 3px 8px; border-radius: 99px; }
+  .overlay { min-height: 398px; display: flex; align-items: center; justify-content: center; }
+  .overlay > .menu-panel, .overlay > .search-panel, .overlay > .modal { width: 100%; }
+  .panel-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .panel-title .h4 { font-size: 13px; }
+  .panel-title .x { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 1px solid var(--xp-card-border); color: var(--muted); }
+  .result-ico { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+  .result-name { font-size: 10px; font-weight: 800; }
+  .result-meta { font-size: 8px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .sheet-wrap { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; }
+  .modal-foot { display: flex; gap: 8px; margin-top: 16px; }
+  .modal-foot .btn { flex: 1; }
+  .btn.danger { background: #ba1a1a; color: #fff; box-shadow: 0 12px 24px -14px rgba(186, 26, 26, .8); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .empty-card { border: 1px dashed #eadfd5; background: #fffdfb; border-radius: 18px; }
+  .toast-stack { width: 100%; }
+  .del-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 5px 0; font-size: 10px; }
+  .del-row .k { font-weight: 600; color: var(--muted); }
+  .del-row .v { font-weight: 800; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">CarePlus Pharma · UI system</div>
+      <h1 class="page-title">Popup &amp; overlay templates</h1>
+      <p class="page-sub">Overlays float on a dimmed, blurred app: glass module grid, coral-tinted search, white confirmation modals, bottom action sheets and compact toasts. One coral action per overlay, everything else is a quiet ghost button.</p>
+    </div>
+    <div class="board-tag">04 / 05</div>
+  </div>
+
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">07</span>
+      <span class="board-title">Overlay set</span>
+      <span class="board-tag">Shared</span>
+      <span class="board-note">Menu · search · confirm · form · toast · empty · action sheet</span>
+    </div>
+
+    <div class="pop-grid">
+
+      <!-- 1. Module menu -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 01</span><span class="k">All modules</span></div>
+        <div class="overlay">
+          <div class="menu-panel">
+            <div class="panel-title">
+              <div>
+                <div class="h4">All modules</div>
+                <div class="micro muted" style="margin-top:2px">Every tool in the workspace</div>
+              </div>
+              <span class="x"><i data-lucide="x" class="i14"></i></span>
+            </div>
+            <div class="menu-grid">
+              <div class="menu-item active"><span class="mi"><i data-lucide="house" class="i18"></i></span><span>Dashboard</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="zap" class="i18"></i></span><span>Fast Billing</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="receipt-indian-rupee" class="i18"></i></span><span>Sales</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="clipboard-list" class="i18"></i></span><span>Purchase</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="package" class="i18"></i></span><span>Inventory</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="users" class="i18"></i></span><span>Masters</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="chart-no-axes-column" class="i18"></i></span><span>Reports</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="truck" class="i18"></i></span><span>Courier</span></div>
+              <div class="menu-item"><span class="mi"><i data-lucide="settings-2" class="i18"></i></span><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Global search -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 02</span><span class="k">Global search</span></div>
+        <div class="overlay" style="padding:16px">
+          <div class="search-panel">
+            <div class="search-head">
+              <div class="flex gap-10">
+                <span class="sq"><i data-lucide="search" class="i18"></i></span>
+                <div>
+                  <div class="h4">Global Search</div>
+                  <div class="micro muted" style="margin-top:1px">Type anything to search across all records</div>
+                </div>
+              </div>
+              <span class="x" style="width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--xp-card-border);color:var(--muted)"><i data-lucide="x" class="i14"></i></span>
+            </div>
+
+            <div class="input focus mt-10" style="border-radius:99px">
+              <i data-lucide="search" class="i14" style="color:var(--xp-accent)"></i>
+              <span style="font-weight:800">dolo 650</span>
+              <span style="width:1px;height:14px;background:var(--xp-accent);margin-left:-2px"></span>
+            </div>
+
+            <div class="micro muted" style="margin:12px 0 6px;letter-spacing:.1em">PRODUCTS · 2 MATCHES</div>
+            <div class="result-row">
+              <span class="result-ico" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="pill" class="i14"></i></span>
+              <div style="flex:1;min-width:0">
+                <div class="result-name">DOLO 650 TAB</div>
+                <div class="result-meta">Paracetamol 650 mg · 10 × 10 · HSN 300490</div>
+              </div>
+              <span class="chip green">68 strips</span>
+            </div>
+            <div class="result-row">
+              <span class="result-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="pill" class="i14"></i></span>
+              <div style="flex:1;min-width:0">
+                <div class="result-name">DOLO 500 TAB</div>
+                <div class="result-meta">Paracetamol 500 mg · 15 × 10 · HSN 300490</div>
+              </div>
+              <span class="chip amber">12 strips</span>
+            </div>
+
+            <div class="micro muted" style="margin:12px 0 6px;letter-spacing:.1em">RECENT</div>
+            <div class="flex gap-6" style="flex-wrap:wrap">
+              <span class="pill-filter">INV-2419</span>
+              <span class="pill-filter">MedPlus</span>
+              <span class="pill-filter">Batch DL26A</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Delete confirm -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 03</span><span class="k">Destructive confirm</span></div>
+        <div class="overlay">
+          <div class="modal warn">
+            <div class="flex gap-10" style="align-items:flex-start">
+              <span class="warn-ico"><i data-lucide="trash-2" class="i20"></i></span>
+              <div>
+                <div class="h3">Delete purchase order?</div>
+                <div class="tiny muted" style="margin-top:4px;line-height:1.5">PO-2026-0148 from MedPlus Distributors will be removed. Received stock stays in inventory.</div>
+              </div>
+            </div>
+            <div class="note-strip mt-14" style="background:var(--xp-tint-red);border-color:#f3c9bd;color:#a03622">
+              <i data-lucide="triangle-alert" class="i14"></i> This cannot be undone.
+            </div>
+            <div class="divider"></div>
+            <div class="del-row"><span class="k">Supplier</span><span class="v">MedPlus Distributors</span></div>
+            <div class="del-row"><span class="k">Order value</span><span class="v">₹1,42,800</span></div>
+            <div class="del-row"><span class="k">Received</span><span class="v">9 of 14 lines</span></div>
+            <div class="modal-foot">
+              <span class="btn ghost">Cancel</span>
+              <span class="btn danger">Delete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Form modal -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 04</span><span class="k">Form modal</span></div>
+        <div class="overlay" style="padding:16px">
+          <div class="modal" style="padding:17px">
+            <div class="panel-title" style="margin-bottom:10px">
+              <div>
+                <div class="h4">Add batch / stock receipt</div>
+                <div class="micro muted" style="margin-top:1px">DOLO 650 TAB · 10 × 10</div>
+              </div>
+              <span class="x"><i data-lucide="x" class="i14"></i></span>
+            </div>
+            <div class="form-grid">
+              <div class="field"><label>Batch number</label><div class="input" style="height:36px"><span>DL26A</span></div></div>
+              <div class="field"><label>Expiry</label><div class="input" style="height:36px"><span>08 / 2028</span><i data-lucide="calendar" class="i14" style="margin-left:auto;color:var(--muted)"></i></div></div>
+              <div class="field"><label>Quantity (boxes)</label><div class="input focus" style="height:36px"><span>10</span></div></div>
+              <div class="field"><label>Free / scheme</label><div class="input" style="height:36px"><span class="ph">0</span></div></div>
+              <div class="field"><label>Purchase rate / box</label><div class="input" style="height:36px"><span>₹950.00</span></div></div>
+              <div class="field"><label>MRP / strip</label><div class="input" style="height:36px"><span>₹150.00</span></div></div>
+            </div>
+            <div class="note-strip ok" style="margin-top:10px"><i data-lucide="arrow-left-right" class="i14"></i> 100 strips @ ₹9.50 · stock value ₹950</div>
+            <div class="modal-foot" style="margin-top:12px">
+              <span class="btn ghost">Cancel</span>
+              <span class="btn primary"><i data-lucide="check" class="i14"></i> Save batch</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Toast + empty -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 05</span><span class="k">Feedback states</span></div>
+        <div class="overlay" style="display:block;padding:18px">
+          <div class="toast-stack">
+            <div class="toast">
+              <span class="tk"><i data-lucide="check" class="i14"></i></span>
+              <div style="flex:1">
+                <div class="tiny" style="font-weight:800">Purchase order shared</div>
+                <div class="micro muted">PO-2026-0148 PNG saved to Downloads/CarePlus</div>
+              </div>
+              <span class="micro" style="font-weight:800;color:var(--muted)">UNDO</span>
+            </div>
+
+            <div class="toast mt-10" style="border-color:#f3d9cf">
+              <span class="tk" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="wifi-off" class="i14"></i></span>
+              <div style="flex:1">
+                <div class="tiny" style="font-weight:800">Saved offline</div>
+                <div class="micro muted">Will sync when the connection returns</div>
+              </div>
+              <span class="micro" style="font-weight:800;color:var(--muted)">RETRY</span>
+            </div>
+
+            <div class="card empty-card mt-14">
+              <div class="empty">
+                <span class="empty-ico"><i data-lucide="package-search" class="i24"></i></span>
+                <div class="h4">No batches found</div>
+                <div class="micro muted" style="margin-top:4px;line-height:1.5">Try a different medicine, salt or batch number,<br />or add a new stock receipt.</div>
+                <div class="flex gap-8" style="justify-content:center;margin-top:12px">
+                  <span class="btn ghost sm">Clear filters</span>
+                  <span class="btn primary sm"><i data-lucide="plus" class="i14"></i> Add batch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Action sheet -->
+      <div>
+        <div class="tile-label"><span class="n">Overlay 06</span><span class="k">Action sheet</span></div>
+        <div class="overlay" style="padding:18px 18px 0;display:block">
+          <div class="sheet-wrap">
+            <div class="menu-panel" style="padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none">
+              <div class="sheet">
+                <div class="grabber"></div>
+                <div class="flex between" style="margin-bottom:8px">
+                  <div>
+                    <div class="h4">PO-2026-0148</div>
+                    <div class="micro muted" style="margin-top:1px">MedPlus Distributors · ₹1,42,800</div>
+                  </div>
+                  <span class="chip amber">Partial</span>
+                </div>
+                <div class="sheet-row"><span class="icon-round green"><i data-lucide="package-check" class="i14"></i></span> Receive stock <i data-lucide="chevron-right" class="i14" style="margin-left:auto;color:var(--muted)"></i></div>
+                <div class="sheet-row"><span class="icon-round"><i data-lucide="share-2" class="i14"></i></span> Share purchase order <i data-lucide="chevron-right" class="i14" style="margin-left:auto;color:var(--muted)"></i></div>
+                <div class="sheet-row"><span class="icon-round"><i data-lucide="download" class="i14"></i></span> Download PNG <i data-lucide="chevron-right" class="i14" style="margin-left:auto;color:var(--muted)"></i></div>
+                <div class="sheet-row" style="color:#a03622"><span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span> Delete order</div>
+                <div class="btn ghost block" style="margin-top:12px">Cancel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

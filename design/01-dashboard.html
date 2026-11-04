@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Dashboard templates</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .mobiles { display: flex; gap: 34px; align-items: flex-start; }
+  .frame-label { text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+  .stack { display: flex; flex-direction: column; }
+  .section-label { display: flex; align-items: center; justify-content: space-between; margin: 16px 0 9px; }
+  .section-label .h4 { color: var(--xp-ink); }
+  .section-label a { font-size: 9px; font-weight: 800; color: var(--xp-accent); text-decoration: none; }
+  .bars { display: flex; align-items: flex-end; gap: 7px; height: 64px; margin-top: 8px; }
+  .bars i { flex: 1; border-radius: 6px 6px 3px 3px; display: block; }
+  .trend-legend { display: flex; gap: 12px; font-size: 8.5px; font-weight: 700; color: var(--muted); }
+  .trend-legend b { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+  .inv-row { display: flex; align-items: center; gap: 9px; padding: 8px 0; border-bottom: 1px solid #f7f1eb; }
+  .inv-row:last-child { border-bottom: 0; }
+  .inv-ico { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+  .inv-name { font-size: 10px; font-weight: 800; line-height: 1.15; }
+  .inv-meta { font-size: 8px; font-weight: 600; color: var(--muted); margin-top: 1px; }
+  .inv-amt { font-size: 10.5px; font-weight: 800; text-align: right; }
+  .alert-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #f7f1eb; font-size: 9.5px; font-weight: 700; }
+  .alert-row:last-child { border-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">CarePlus Pharma · UI system</div>
+      <h1 class="page-title">Dashboard templates</h1>
+      <p class="page-sub">The Warm Expressive home screen: cream-to-lilac hero, credit-card quick actions, soft KPI cards and the white app canvas. Same tokens, two targets — portrait APK tiles and landscape web tiles.</p>
+    </div>
+    <div class="board-tag">01 / 05</div>
+  </div>
+
+  <!-- ================= MOBILE ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">01</span>
+      <span class="board-title">Mobile dashboard</span>
+      <span class="board-tag">APK</span>
+      <span class="board-note">390 × 844 · above the fold and scrolled states</span>
+    </div>
+
+    <div class="mobiles">
+      <!-- phone 1 -->
+      <div class="stack">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="statusbar">
+              <span>9:41</span>
+              <span class="right">
+                <i data-lucide="signal" class="i14"></i>
+                <i data-lucide="wifi" class="i14"></i>
+                <i data-lucide="battery-full" class="i16"></i>
+              </span>
+            </div>
+            <div class="phone-body">
+              <div class="app-topbar">
+                <div class="brand">
+                  <span class="brand-mark"><i data-lucide="pill" class="i18"></i></span>
+                  <span>
+                    <span class="brand-name">CarePlus</span><br />
+                    <span class="brand-sub">Pharma ERP</span>
+                  </span>
+                </div>
+                <div class="flex gap-8">
+                  <span class="icon-btn" style="position:relative">
+                    <i data-lucide="bell" class="i16"></i>
+                    <b style="position:absolute;top:7px;right:8px;width:6px;height:6px;border-radius:50%;background:var(--xp-accent)"></b>
+                  </span>
+                  <span class="icon-btn"><i data-lucide="scan-line" class="i16"></i></span>
+                </div>
+              </div>
+
+              <div class="hero">
+                <h1 class="h1">Good day, Vivek!</h1>
+                <p>Here's your business overview.</p>
+                <span class="hero-chip"><i data-lucide="sparkles" class="i14"></i> Wed, 4 Nov · 3 bills need review</span>
+              </div>
+
+              <div class="section-label">
+                <span class="h4">Quick actions</span>
+                <a href="#">Customise</a>
+              </div>
+
+              <div class="qa-grid native">
+                <div class="qa grad-coral">
+                  <span class="glow-a"></span><span class="glow-b"></span>
+                  <i data-lucide="zap" class="wm"></i>
+                  <span class="qa-label">Fast Billing</span>
+                  <span class="qa-sub">Create GST Invoice</span>
+                </div>
+                <div class="qa grad-violet">
+                  <span class="glow-a"></span><span class="glow-b"></span>
+                  <i data-lucide="users" class="wm"></i>
+                  <span class="qa-label">Masters</span>
+                  <span class="qa-sub">Products &amp; Parties</span>
+                </div>
+                <div class="qa grad-blue">
+                  <span class="glow-a"></span><span class="glow-b"></span>
+                  <i data-lucide="truck" class="wm"></i>
+                  <span class="qa-label">Courier Tracking</span>
+                  <span class="qa-sub">DTDC Dockets &amp; Scans</span>
+                </div>
+                <div class="qa grad-green">
+                  <span class="glow-a"></span><span class="glow-b"></span>
+                  <i data-lucide="file-up" class="wm"></i>
+                  <span class="qa-label">Purchase Inbox</span>
+                  <span class="qa-sub">Import Supplier PDF</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bottomnav">
+              <span class="nav-item active"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="receipt-indian-rupee" class="i18"></i></span>Sales</span>
+              <span class="nav-search"><i data-lucide="search" class="i16"></i> Search anything…</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="package" class="i18"></i></span>Stock</span>
+              <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="frame-label">Above the fold · 2 × 2 portrait tiles</div>
+      </div>
+
+      <!-- phone 2 -->
+      <div class="stack">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="statusbar">
+              <span>9:41</span>
+              <span class="right">
+                <i data-lucide="signal" class="i14"></i>
+                <i data-lucide="wifi" class="i14"></i>
+                <i data-lucide="battery-full" class="i16"></i>
+              </span>
+            </div>
+            <div class="phone-body" style="padding-top:6px">
+              <div class="section-label" style="margin-top:0">
+                <span class="h4">Key performance</span>
+                <a href="#">This month</a>
+              </div>
+
+              <div class="kpi-grid native">
+                <div class="kpi">
+                  <div class="kpi-top">
+                    <div class="flex gap-8">
+                      <span class="kpi-ico" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="trending-up" class="i14"></i></span>
+                      <span class="kpi-label">Total Sales<br />(Nov)</span>
+                    </div>
+                    <span class="chip green">+12.4%</span>
+                  </div>
+                  <div class="kpi-value">₹4,86,250</div>
+                  <div class="kpi-sub">vs. Oct ₹4,32,600</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-top">
+                    <div class="flex gap-8">
+                      <span class="kpi-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="landmark" class="i14"></i></span>
+                      <span class="kpi-label">GST<br />Collected</span>
+                    </div>
+                    <span class="chip green">+8.1%</span>
+                  </div>
+                  <div class="kpi-value">₹38,412</div>
+                  <div class="kpi-sub">CGST ₹19,206 · SGST ₹19,206</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-top">
+                    <div class="flex gap-8">
+                      <span class="kpi-ico" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="clock-3" class="i14"></i></span>
+                      <span class="kpi-label">Outstanding<br />Receivables</span>
+                    </div>
+                    <span class="chip amber">18 due</span>
+                  </div>
+                  <div class="kpi-value">₹1,24,900</div>
+                  <div class="kpi-sub">₹42,300 overdue 30+ days</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-top">
+                    <div class="flex gap-8">
+                      <span class="kpi-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="package" class="i14"></i></span>
+                      <span class="kpi-label">Stock<br />Value</span>
+                    </div>
+                    <span class="chip amber">12 alerts</span>
+                  </div>
+                  <div class="kpi-value">₹8,72,400</div>
+                  <div class="kpi-sub">1,284 batches on hand</div>
+                </div>
+              </div>
+
+              <div class="section-label">
+                <span class="h4">Recent wholesale invoices</span>
+                <a href="#">View all</a>
+              </div>
+
+              <div class="card tight">
+                <div class="inv-row">
+                  <span class="inv-ico" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="receipt-text" class="i16"></i></span>
+                  <div style="flex:1;min-width:0">
+                    <div class="inv-name">Sharma Medical Store</div>
+                    <div class="inv-meta">INV-2419 · 4 Nov · 14 items</div>
+                  </div>
+                  <div>
+                    <div class="inv-amt">₹12,480</div>
+                    <div class="chip green" style="margin-top:3px">Paid</div>
+                  </div>
+                </div>
+                <div class="inv-row">
+                  <span class="inv-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="receipt-text" class="i16"></i></span>
+                  <div style="flex:1;min-width:0">
+                    <div class="inv-name">Lifecare Chemist</div>
+                    <div class="inv-meta">INV-2418 · 4 Nov · 9 items</div>
+                  </div>
+                  <div>
+                    <div class="inv-amt">₹8,960</div>
+                    <div class="chip amber" style="margin-top:3px">Partial</div>
+                  </div>
+                </div>
+                <div class="inv-row">
+                  <span class="inv-ico" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="receipt-text" class="i16"></i></span>
+                  <div style="flex:1;min-width:0">
+                    <div class="inv-name">Ganesh Pharma</div>
+                    <div class="inv-meta">INV-2417 · 3 Nov · 22 items</div>
+                  </div>
+                  <div>
+                    <div class="inv-amt">₹21,300</div>
+                    <div class="chip amber" style="margin-top:3px">Pending GST</div>
+                  </div>
+                </div>
+                <div class="inv-row">
+                  <span class="inv-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="receipt-text" class="i16"></i></span>
+                  <div style="flex:1;min-width:0">
+                    <div class="inv-name">City Hospital</div>
+                    <div class="inv-meta">INV-2416 · 3 Nov · 6 items</div>
+                  </div>
+                  <div>
+                    <div class="inv-amt">₹5,740</div>
+                    <div class="chip green" style="margin-top:3px">Paid</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="section-label">
+                <span class="h4">Stock alerts</span>
+                <a href="#">View all</a>
+              </div>
+
+              <div class="card tight">
+                <div class="alert-row">
+                  <span class="chip red">Expiry</span>
+                  <span style="flex:1;min-width:0">AMOXICILLIN CAPS · AM26C</span>
+                  <span class="micro muted">03/27</span>
+                </div>
+                <div class="alert-row">
+                  <span class="chip amber">Low</span>
+                  <span style="flex:1;min-width:0">ZINCOVIT TAB · ZN26B</span>
+                  <span class="micro muted">12 left</span>
+                </div>
+                <div class="alert-row">
+                  <span class="chip amber">Low</span>
+                  <span style="flex:1;min-width:0">DOLO 650 TAB · DL26A</span>
+                  <span class="micro muted">68 left</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bottomnav">
+              <span class="nav-item active"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="receipt-indian-rupee" class="i18"></i></span>Sales</span>
+              <span class="nav-search"><i data-lucide="search" class="i16"></i> Search anything…</span>
+              <span class="nav-item"><span class="nav-ico"><i data-lucide="package" class="i18"></i></span>Stock</span>
+              <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="frame-label">Scrolled · KPIs and invoice feed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WEB ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">02</span>
+      <span class="board-title">Web dashboard</span>
+      <span class="board-tag">Web</span>
+      <span class="board-note">1280 × 1020 · single row of four landscape tiles</span>
+    </div>
+
+    <div class="desktop" style="height:1020px">
+      <div class="desktop-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="desktop-url">app.careplus.pharma / dashboard</span>
+      </div>
+      <div class="desktop-body">
+        <div class="app-topbar" style="padding-bottom:16px">
+          <div class="brand">
+            <span class="brand-mark" style="width:38px;height:38px;border-radius:13px"><i data-lucide="pill" class="i20"></i></span>
+            <span>
+              <span class="brand-name" style="font-size:14px">CarePlus</span><br />
+              <span class="brand-sub">Pharma ERP · Wholesale &amp; Retail</span>
+            </span>
+          </div>
+          <div class="flex gap-10">
+            <span class="chip green"><i data-lucide="shield-check" class="i14"></i> GST reconciled 96%</span>
+            <span class="icon-btn"><i data-lucide="bell" class="i16"></i></span>
+            <span class="icon-btn"><i data-lucide="settings-2" class="i16"></i></span>
+            <span class="avatar" style="background:var(--xp-ink);color:#fff">VP</span>
+          </div>
+        </div>
+
+        <div class="hero" style="padding:24px 26px;min-height:132px;display:flex;align-items:center;justify-content:space-between">
+          <div>
+            <h1 class="h1" style="font-size:34px">Good day, Vivek!</h1>
+            <p>Here's your business overview for November 2026.</p>
+          </div>
+          <div class="flex gap-8" style="position:relative">
+            <span class="hero-chip" style="margin-top:0"><i data-lucide="calendar-days" class="i14"></i> 1 – 30 Nov</span>
+            <span class="hero-chip" style="margin-top:0"><i data-lucide="sparkles" class="i14"></i> 3 bills need review</span>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-top:18px">
+          <span class="h4">Quick actions</span>
+          <a href="#">Customise tiles</a>
+        </div>
+
+        <div class="qa-grid web">
+          <div class="qa grad-coral">
+            <span class="glow-a"></span><span class="glow-b"></span>
+            <i data-lucide="zap" class="wm" style="right:-22px"></i>
+            <span class="qa-label">Fast Billing</span>
+            <span class="qa-sub">Create GST Invoice</span>
+          </div>
+          <div class="qa grad-violet">
+            <span class="glow-a"></span><span class="glow-b"></span>
+            <i data-lucide="users" class="wm" style="right:-22px"></i>
+            <span class="qa-label">Masters</span>
+            <span class="qa-sub">Products &amp; Parties</span>
+          </div>
+          <div class="qa grad-blue">
+            <span class="glow-a"></span><span class="glow-b"></span>
+            <i data-lucide="truck" class="wm" style="right:-22px"></i>
+            <span class="qa-label">Courier Tracking</span>
+            <span class="qa-sub">DTDC Dockets &amp; Scans</span>
+          </div>
+          <div class="qa grad-green">
+            <span class="glow-a"></span><span class="glow-b"></span>
+            <i data-lucide="file-up" class="wm" style="right:-22px"></i>
+            <span class="qa-label">Purchase Inbox</span>
+            <span class="qa-sub">Import Supplier PDF</span>
+          </div>
+        </div>
+
+        <div class="section-label" style="margin-top:18px">
+          <span class="h4">Key performance</span>
+          <a href="#">This month ⌄</a>
+        </div>
+
+        <div class="kpi-grid web">
+          <div class="kpi">
+            <div class="kpi-top">
+              <div class="flex gap-8">
+                <span class="kpi-ico" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="trending-up" class="i14"></i></span>
+                <span class="kpi-label">Total Sales (Nov)</span>
+              </div>
+              <span class="chip green">+12.4%</span>
+            </div>
+            <div class="kpi-value">₹4,86,250</div>
+            <div class="flex between" style="align-items:flex-end">
+              <div class="kpi-sub">vs. Oct ₹4,32,600</div>
+              <span class="spark" style="color:var(--xp-accent)">
+                <i style="height:8px"></i><i style="height:12px"></i><i style="height:9px"></i><i style="height:15px"></i><i style="height:13px"></i><i style="height:19px"></i><i style="height:22px"></i>
+              </span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-top">
+              <div class="flex gap-8">
+                <span class="kpi-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="landmark" class="i14"></i></span>
+                <span class="kpi-label">GST Collected</span>
+              </div>
+              <span class="chip green">+8.1%</span>
+            </div>
+            <div class="kpi-value">₹38,412</div>
+            <div class="flex between" style="align-items:flex-end">
+              <div class="kpi-sub">CGST ₹19,206 · SGST ₹19,206</div>
+              <span class="spark" style="color:#c58a12">
+                <i style="height:10px"></i><i style="height:8px"></i><i style="height:14px"></i><i style="height:11px"></i><i style="height:17px"></i><i style="height:15px"></i><i style="height:20px"></i>
+              </span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-top">
+              <div class="flex gap-8">
+                <span class="kpi-ico" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="clock-3" class="i14"></i></span>
+                <span class="kpi-label">Outstanding Receivables</span>
+              </div>
+              <span class="chip amber">18 due</span>
+            </div>
+            <div class="kpi-value">₹1,24,900</div>
+            <div class="flex between" style="align-items:flex-end">
+              <div class="kpi-sub">₹42,300 overdue 30+ days</div>
+              <span class="spark" style="color:var(--xp-blue)">
+                <i style="height:18px"></i><i style="height:15px"></i><i style="height:13px"></i><i style="height:16px"></i><i style="height:11px"></i><i style="height:9px"></i><i style="height:7px"></i>
+              </span>
+            </div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-top">
+              <div class="flex gap-8">
+                <span class="kpi-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="package" class="i14"></i></span>
+                <span class="kpi-label">Stock Value</span>
+              </div>
+              <span class="chip amber">12 alerts</span>
+            </div>
+            <div class="kpi-value">₹8,72,400</div>
+            <div class="flex between" style="align-items:flex-end">
+              <div class="kpi-sub">1,284 batches on hand</div>
+              <span class="spark" style="color:var(--xp-violet)">
+                <i style="height:9px"></i><i style="height:13px"></i><i style="height:11px"></i><i style="height:16px"></i><i style="height:14px"></i><i style="height:18px"></i><i style="height:21px"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="grid-template-columns:1.55fr 1fr; gap:14px; margin-top:16px">
+          <div class="card tight">
+            <div class="card-head" style="margin-bottom:4px">
+              <span class="h3">Recent wholesale invoices</span>
+              <span class="sec-link" style="font-size:9px;font-weight:800;color:var(--xp-accent)">View all <i data-lucide="chevron-right" class="i14"></i></span>
+            </div>
+            <div class="inv-row">
+              <span class="inv-ico" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="receipt-text" class="i16"></i></span>
+              <div style="flex:1;min-width:0">
+                <div class="inv-name">Sharma Medical Store</div>
+                <div class="inv-meta">INV-2419 · 4 Nov · 14 items</div>
+              </div>
+              <div><div class="inv-amt">₹12,480</div><div class="chip green" style="margin-top:3px">Paid</div></div>
+            </div>
+            <div class="inv-row">
+              <span class="inv-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="receipt-text" class="i16"></i></span>
+              <div style="flex:1;min-width:0">
+                <div class="inv-name">Ganesh Pharma</div>
+                <div class="inv-meta">INV-2417 · 3 Nov · 22 items</div>
+              </div>
+              <div><div class="inv-amt">₹21,300</div><div class="chip amber" style="margin-top:3px">Pending GST</div></div>
+            </div>
+            <div class="inv-row">
+              <span class="inv-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="receipt-text" class="i16"></i></span>
+              <div style="flex:1;min-width:0">
+                <div class="inv-name">City Hospital</div>
+                <div class="inv-meta">INV-2416 · 3 Nov · 6 items</div>
+              </div>
+              <div><div class="inv-amt">₹5,740</div><div class="chip green" style="margin-top:3px">Paid</div></div>
+            </div>
+          </div>
+
+          <div class="card tight">
+            <div class="card-head" style="margin-bottom:0">
+              <span class="h3">Sales vs purchases</span>
+              <span class="trend-legend"><span><b style="background:var(--xp-accent)"></b>Sales</span><span><b style="background:var(--xp-accent-2)"></b>Purchase</span></span>
+            </div>
+            <div class="bars" style="height:84px;margin-top:14px">
+              <i style="height:44%;background:#f6c3b5"></i><i style="height:62%;background:var(--xp-accent)"></i>
+              <i style="height:38%;background:#f6c3b5"></i><i style="height:70%;background:var(--xp-accent)"></i>
+              <i style="height:52%;background:#f6c3b5"></i><i style="height:86%;background:var(--xp-accent)"></i>
+              <i style="height:60%;background:#f6c3b5"></i><i style="height:100%;background:var(--xp-accent)"></i>
+            </div>
+            <div class="flex between" style="margin-top:8px">
+              <span class="micro muted">1 Nov</span><span class="micro muted">4 Nov</span><span class="micro muted">8 Nov</span><span class="micro muted">12 Nov</span>
+            </div>
+            <div class="divider"></div>
+            <div class="flex between">
+              <span class="tiny muted" style="font-weight:700">Gross margin</span>
+              <span class="chip green">+21.4%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottomnav" style="left:22px;right:22px">
+        <span class="nav-item active"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+        <span class="nav-item"><span class="nav-ico"><i data-lucide="receipt-indian-rupee" class="i18"></i></span>Sales</span>
+        <span class="nav-item"><span class="nav-ico"><i data-lucide="clipboard-list" class="i18"></i></span>Purchase</span>
+        <span class="nav-search" style="max-width:420px"><i data-lucide="search" class="i16"></i> Search products, parties, invoices, batches…</span>
+        <span class="nav-item"><span class="nav-ico"><i data-lucide="package" class="i18"></i></span>Stock</span>
+        <span class="nav-item"><span class="nav-ico"><i data-lucide="chart-no-axes-column" class="i18"></i></span>Reports</span>
+        <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

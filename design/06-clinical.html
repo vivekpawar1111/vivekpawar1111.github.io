@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Direction B — Clinical Clarity</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  /* ==========================================================================
+     Direction B — Clinical Clarity
+     Cool neutral canvas, apothecary teal, navy ink, 8–12px radii, mono amounts.
+     ========================================================================== */
+  @font-face { font-family: 'Inter'; src: url('vendor/inter-400.woff2') format('woff2'); font-weight: 400; font-display: block; }
+  @font-face { font-family: 'Inter'; src: url('vendor/inter-500.woff2') format('woff2'); font-weight: 500; font-display: block; }
+  @font-face { font-family: 'Inter'; src: url('vendor/inter-600.woff2') format('woff2'); font-weight: 600; font-display: block; }
+  @font-face { font-family: 'Inter'; src: url('vendor/inter-700.woff2') format('woff2'); font-weight: 700; font-display: block; }
+  @font-face { font-family: 'Inter'; src: url('vendor/inter-800.woff2') format('woff2'); font-weight: 800; font-display: block; }
+
+  :root {
+    --cl-bg: #f4f6f8;
+    --cl-surface: #ffffff;
+    --cl-line: #dde4ea;
+    --cl-line-soft: #edf1f5;
+    --cl-ink: #101828;
+    --cl-muted: #667085;
+    --cl-faint: #98a2b3;
+    --cl-teal: #0e7c66;
+    --cl-teal-700: #0a6353;
+    --cl-teal-50: #e7f4f1;
+    --cl-blue: #175cd3;
+    --cl-blue-50: #eff4ff;
+    --cl-amber: #b54708;
+    --cl-amber-50: #fff4e5;
+    --cl-red: #b42318;
+    --cl-red-50: #fef3f2;
+    --cl-violet: #5925dc;
+    --cl-violet-50: #f4f3ff;
+    --cl-navy: #14324f;
+    --cl-mono: ui-monospace, 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+
+  body { background: #eef1f4; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--cl-ink); }
+  .page { --xp-accent: #0e7c66; --xp-accent-soft: #e7f4f1; --xp-card-border: #dde4ea; --xp-ink: #101828; --xp-ink-soft: #667085; }
+
+  .cl-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+  .cl-head h1 { margin: 0; font-size: 38px; line-height: 1.04; letter-spacing: -.04em; font-weight: 700; }
+  .cl-head h1 span { color: var(--cl-teal); }
+  .cl-head p { margin: 10px 0 0; font-size: 13px; line-height: 1.65; color: var(--cl-muted); max-width: 620px; }
+  .cl-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 9.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--cl-teal); margin-bottom: 10px; }
+  .cl-eyebrow::before { content: ''; width: 18px; height: 2px; background: var(--cl-teal); }
+  .dir-badge { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cl-teal); border: 1px solid #b9d8d1; background: #f2faf8; padding: 6px 11px; border-radius: 6px; }
+
+  .cl-tokens { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 30px; }
+  .cl-tok { display: inline-flex; align-items: center; gap: 7px; background: #fff; border: 1px solid var(--cl-line); border-radius: 6px; padding: 6px 9px; font-family: var(--cl-mono); font-size: 9px; font-weight: 500; color: var(--cl-muted); }
+  .cl-tok i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  /* ---------- app shell ---------- */
+  .cl-desktop { width: 1280px; height: 700px; background: var(--cl-bg); border-radius: 14px; border: 1px solid #d5dde4; overflow: hidden; box-shadow: 0 32px 70px -48px rgba(16, 24, 40, .5); position: relative; flex: none; }
+  .cl-shell { display: flex; height: 100%; }
+
+  .cl-side { width: 208px; flex: none; background: #fff; border-right: 1px solid var(--cl-line); padding: 18px 14px; display: flex; flex-direction: column; }
+  .cl-brand { display: flex; align-items: center; gap: 9px; padding: 0 4px 18px; border-bottom: 1px solid var(--cl-line-soft); }
+  .cl-mark { width: 30px; height: 30px; border-radius: 7px; background: var(--cl-teal); color: #fff; display: grid; place-items: center; flex: none; }
+  .cl-brand .bn { font-size: 13px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+  .cl-brand .bs { font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cl-faint); }
+  .cl-nav { padding-top: 14px; flex: 1; }
+  .cl-nav-label { font-size: 8.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--cl-faint); padding: 0 8px; margin: 10px 0 5px; }
+  .cl-nav-item { display: flex; align-items: center; gap: 9px; height: 34px; padding: 0 8px; border-radius: 6px; font-size: 11px; font-weight: 500; color: var(--cl-muted); margin-bottom: 1px; }
+  .cl-nav-item.active { background: var(--cl-teal-50); color: var(--cl-teal-700); font-weight: 600; box-shadow: inset 2px 0 0 var(--cl-teal); }
+  .cl-nav-item .n { margin-left: auto; font-family: var(--cl-mono); font-size: 8.5px; background: var(--cl-bg); border-radius: 3px; padding: 2px 5px; color: var(--cl-muted); }
+  .cl-nav-item.active .n { background: #fff; color: var(--cl-teal); }
+  .cl-user { border-top: 1px solid var(--cl-line-soft); padding-top: 12px; display: flex; align-items: center; gap: 9px; }
+  .cl-user .av { width: 30px; height: 30px; border-radius: 50%; background: var(--cl-navy); color: #fff; display: grid; place-items: center; font-size: 9px; font-weight: 700; flex: none; }
+  .cl-user .nm { font-size: 10.5px; font-weight: 600; }
+  .cl-user .rl { font-size: 8.5px; color: var(--cl-faint); }
+
+  .cl-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .cl-top { height: 58px; flex: none; background: #fff; border-bottom: 1px solid var(--cl-line); display: flex; align-items: center; justify-content: space-between; padding: 0 22px; }
+  .cl-top h2 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -.02em; }
+  .cl-top .crumb { font-size: 9.5px; color: var(--cl-faint); font-weight: 500; margin-top: 2px; }
+  .cl-top-right { display: flex; align-items: center; gap: 8px; }
+  .cl-search { width: 232px; height: 32px; border: 1px solid var(--cl-line); border-radius: 6px; background: var(--cl-bg); display: flex; align-items: center; gap: 7px; padding: 0 10px; font-size: 10px; color: var(--cl-faint); white-space: nowrap; overflow: hidden; }
+  .cl-iconbtn { width: 32px; height: 32px; border: 1px solid var(--cl-line); border-radius: 6px; display: grid; place-items: center; color: var(--cl-muted); background: #fff; }
+  .cl-date { height: 32px; border: 1px solid var(--cl-line); border-radius: 6px; padding: 0 10px; display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; color: var(--cl-muted); background: #fff; }
+  .cl-content { padding: 18px 22px; overflow: hidden; flex: 1; }
+
+  .cl-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .cl-kpi { background: #fff; border: 1px solid var(--cl-line); border-radius: 10px; padding: 13px 14px; position: relative; overflow: hidden; }
+  .cl-kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--cl-teal); opacity: .55; }
+  .cl-kpi.k2::before { background: var(--cl-blue); }
+  .cl-kpi.k3::before { background: var(--cl-amber); }
+  .cl-kpi.k4::before { background: var(--cl-violet); }
+  .cl-kpi .lab { display: flex; align-items: center; justify-content: space-between; font-size: 9px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--cl-muted); }
+  .cl-kpi .val { font-family: var(--cl-mono); font-size: 23px; font-weight: 600; letter-spacing: -.04em; margin-top: 9px; line-height: 1; }
+  .cl-kpi .foot { display: flex; align-items: center; justify-content: space-between; margin-top: 9px; font-size: 9px; color: var(--cl-faint); font-weight: 500; }
+  .cl-delta { display: inline-flex; align-items: center; gap: 3px; font-family: var(--cl-mono); font-size: 9px; font-weight: 600; padding: 2px 5px; border-radius: 3px; background: var(--cl-teal-50); color: var(--cl-teal-700); }
+  .cl-delta.down { background: var(--cl-red-50); color: var(--cl-red); }
+
+  .cl-grid { display: grid; grid-template-columns: 1.65fr 1fr; gap: 12px; margin-top: 12px; }
+  .cl-card { background: #fff; border: 1px solid var(--cl-line); border-radius: 10px; padding: 14px 15px; }
+  .cl-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .cl-card-head h3 { margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: -.01em; }
+  .cl-sub { font-size: 9px; color: var(--cl-faint); font-weight: 500; margin-top: 2px; }
+  .cl-seg { display: inline-flex; border: 1px solid var(--cl-line); border-radius: 5px; overflow: hidden; }
+  .cl-seg span { padding: 4px 9px; font-size: 9px; font-weight: 600; color: var(--cl-muted); border-right: 1px solid var(--cl-line); }
+  .cl-seg span:last-child { border-right: 0; }
+  .cl-seg span.on { background: var(--cl-teal); color: #fff; }
+  .cl-legend { display: flex; gap: 10px; font-size: 8.5px; color: var(--cl-muted); font-weight: 500; }
+  .cl-legend b { width: 7px; height: 7px; border-radius: 2px; display: inline-block; margin-right: 4px; }
+
+  .cl-chart { width: 100%; height: 168px; display: block; margin-top: 2px; }
+  .cl-axis { display: flex; justify-content: space-between; font-family: var(--cl-mono); font-size: 8px; color: var(--cl-faint); margin-top: 4px; padding: 0 2px; }
+
+  .cl-today .row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--cl-line-soft); }
+  .cl-today .row:last-child { border-bottom: 0; }
+  .cl-today .k { font-size: 9.5px; color: var(--cl-muted); font-weight: 500; }
+  .cl-today .v { font-family: var(--cl-mono); font-size: 11px; font-weight: 600; }
+  .cl-target { margin-top: 6px; }
+  .cl-bar { height: 5px; border-radius: 2px; background: var(--cl-line-soft); overflow: hidden; }
+  .cl-bar i { display: block; height: 100%; background: var(--cl-teal); border-radius: 2px; }
+  .cl-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 6px; border: 1px solid transparent; font-size: 10px; font-weight: 600; white-space: nowrap; }
+  .cl-btn.primary { background: var(--cl-teal); color: #fff; }
+  .cl-btn.ghost { background: #fff; border-color: var(--cl-line); color: var(--cl-ink); }
+  .cl-btn.block { width: 100%; }
+  .cl-btn.sm { height: 27px; font-size: 9px; padding: 0 9px; }
+
+  .cl-table { width: 100%; border-collapse: collapse; }
+  .cl-table th { text-align: left; font-size: 8px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--cl-faint); padding: 0 10px 7px; border-bottom: 1px solid var(--cl-line); white-space: nowrap; }
+  .cl-table td { padding: 8px 10px; border-bottom: 1px solid var(--cl-line-soft); font-size: 9.5px; font-weight: 500; color: var(--cl-ink); }
+  .cl-table tr:last-child td { border-bottom: 0; }
+  .cl-table .m { font-family: var(--cl-mono); font-size: 9px; }
+  .cl-table .muted { color: var(--cl-faint); }
+  .cl-pill { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 3px; font-size: 8px; font-weight: 600; letter-spacing: .02em; }
+  .cl-pill::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+  .cl-pill.ok { background: var(--cl-teal-50); color: var(--cl-teal-700); }
+  .cl-pill.warn { background: var(--cl-amber-50); color: var(--cl-amber); }
+  .cl-pill.bad { background: var(--cl-red-50); color: var(--cl-red); }
+  .cl-pill.info { background: var(--cl-blue-50); color: var(--cl-blue); }
+  .cl-pill.neutral { background: #f2f4f7; color: var(--cl-muted); }
+
+  /* ---------- phone ---------- */
+  .cl-phone { background: #fff; }
+  .cl-status { height: 38px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; font-size: 10px; font-weight: 600; }
+  .cl-pbody { height: calc(100% - 38px); overflow: hidden; padding: 0 16px 84px; }
+  .cl-ptop { display: flex; align-items: center; justify-content: space-between; padding: 2px 0 12px; }
+  .cl-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--cl-navy); color: #fff; display: grid; place-items: center; font-size: 9px; font-weight: 700; }
+  .cl-ptitle { font-size: 20px; font-weight: 700; letter-spacing: -.03em; }
+  .cl-psub { font-size: 9px; color: var(--cl-faint); font-weight: 500; margin-top: 2px; }
+  .cl-today-band { border-radius: 8px; background: var(--cl-teal); color: #fff; padding: 13px 14px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .cl-today-band .lab { font-size: 8px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
+  .cl-today-band .amt { font-family: var(--cl-mono); font-size: 24px; font-weight: 600; letter-spacing: -.04em; line-height: 1; margin-top: 6px; }
+  .cl-today-band .meta { font-size: 8.5px; opacity: .85; margin-top: 4px; }
+  .cl-today-band .right { text-align: right; font-size: 8.5px; opacity: .9; }
+
+  .cl-qgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .cl-qa { border: 1px solid var(--cl-line); border-radius: 8px; background: #fff; padding: 11px; display: flex; flex-direction: column; gap: 8px; }
+  .cl-qa .qi { width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center; background: var(--cl-teal-50); color: var(--cl-teal); }
+  .cl-qa .qn { font-size: 10px; font-weight: 600; }
+  .cl-qa .qs { font-size: 8px; color: var(--cl-faint); font-weight: 500; margin-top: 1px; }
+
+  .cl-mini-kpi { border: 1px solid var(--cl-line); border-radius: 8px; padding: 10px 11px; background: #fff; }
+  .cl-mini-kpi .l { font-size: 8px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--cl-faint); }
+  .cl-mini-kpi .v { font-family: var(--cl-mono); font-size: 16px; font-weight: 600; letter-spacing: -.03em; margin-top: 5px; }
+  .cl-mini-kpi .d { font-size: 8px; color: var(--cl-teal); font-weight: 600; margin-top: 3px; }
+
+  .cl-prow { display: flex; align-items: center; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--cl-line-soft); }
+  .cl-prow:last-child { border-bottom: 0; }
+  .cl-prow .pn { font-size: 9.5px; font-weight: 600; }
+  .cl-prow .pm { font-size: 8px; color: var(--cl-faint); margin-top: 1px; }
+  .cl-prow .pv { margin-left: auto; font-family: var(--cl-mono); font-size: 9px; font-weight: 600; }
+
+  .cl-tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 62px; border-top: 1px solid var(--cl-line); background: #fff; display: flex; align-items: center; justify-content: space-around; padding: 0 8px; }
+  .cl-tab { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 7.5px; font-weight: 600; color: var(--cl-faint); width: 50px; }
+  .cl-tab.active { color: var(--cl-teal); }
+  .cl-tab .ti { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 6px; }
+  .cl-tab.active .ti { background: var(--cl-teal-50); }
+  .cl-tab.center { width: 42px; height: 42px; border-radius: 10px; background: var(--cl-teal); color: #fff; justify-content: center; gap: 0; }
+
+  /* ---------- list page ---------- */
+  .cl-pagebar { height: 54px; border-bottom: 1px solid var(--cl-line); background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+  .cl-pagebar .l { display: flex; align-items: center; gap: 10px; }
+  .cl-pagebar h2 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+  .cl-pagebar .b { font-size: 9px; color: var(--cl-faint); margin-top: 1px; }
+  .cl-filterbar { display: flex; align-items: center; gap: 7px; padding: 14px 20px; }
+  .cl-input { height: 30px; border: 1px solid var(--cl-line); border-radius: 6px; background: #fff; display: flex; align-items: center; gap: 6px; padding: 0 9px; font-size: 9.5px; color: var(--cl-faint); }
+  .cl-input.grow { flex: 1; max-width: 280px; }
+  .cl-chip { height: 27px; padding: 0 9px; border: 1px solid var(--cl-line); border-radius: 5px; display: inline-flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 500; color: var(--cl-muted); background: #fff; }
+  .cl-chip.on { background: var(--cl-teal); border-color: var(--cl-teal); color: #fff; font-weight: 600; }
+
+  .cl-tablewrap { margin: 0 20px; border: 1px solid var(--cl-line); border-radius: 8px; overflow: hidden; background: #fff; }
+  .cl-tablewrap .cl-table th { background: #fcfcfd; padding: 9px 12px 8px; }
+  .cl-tablewrap .cl-table td { padding: 10px 12px; font-size: 10px; }
+  .cl-tablewrap .cl-table tr:hover td { background: #fbfcfd; }
+  .cl-po { display: flex; align-items: center; gap: 8px; }
+  .cl-po .m { font-family: var(--cl-mono); font-size: 9.5px; font-weight: 600; }
+  .cl-po .s { font-size: 8px; color: var(--cl-faint); margin-top: 1px; }
+  .cl-rowact { display: flex; gap: 4px; justify-content: flex-end; }
+  .cl-rowact span { width: 25px; height: 25px; border: 1px solid var(--cl-line); border-radius: 5px; display: grid; place-items: center; color: var(--cl-muted); }
+  .cl-rowact span.danger { color: var(--cl-red); border-color: #f3c9c5; background: var(--cl-red-50); }
+
+  /* ---------- overlay ---------- */
+  .cl-overlay { position: absolute; inset: 0; background: rgba(16, 24, 40, .38); display: flex; justify-content: flex-end; }
+  .cl-modal { width: 360px; background: #fff; height: 100%; border-left: 1px solid var(--cl-line); padding: 20px; overflow: hidden; }
+  .cl-modal h3 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+  .cl-modal .muted { font-size: 9.5px; color: var(--cl-faint); margin-top: 3px; }
+  .cl-field { margin-top: 13px; }
+  .cl-field label { display: block; font-size: 8.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--cl-muted); margin-bottom: 5px; }
+  .cl-field .box { height: 34px; border: 1px solid var(--cl-line); border-radius: 6px; display: flex; align-items: center; padding: 0 10px; font-size: 10px; font-weight: 500; }
+  .cl-field .box.focus { border-color: var(--cl-teal); box-shadow: 0 0 0 3px rgba(14, 124, 102, .1); }
+  .cl-field .hint { margin-top: 4px; font-size: 8px; color: var(--cl-faint); }
+  .cl-note { border: 1px solid #c9e3dc; background: #f2faf8; border-radius: 6px; padding: 9px 10px; font-size: 9px; color: var(--cl-teal-700); font-weight: 500; display: flex; gap: 7px; align-items: flex-start; }
+
+  /* ---------- primitives ---------- */
+  .cl-lib { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: start; }
+  .cl-spec { background: #fff; border: 1px solid var(--cl-line); border-radius: 10px; padding: 16px; }
+  .cl-spec.span2 { grid-column: span 2; }
+  .cl-spec-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
+  .cl-spec-head .t { font-size: 11px; font-weight: 700; letter-spacing: -.01em; }
+  .cl-spec-head .m { font-family: var(--cl-mono); font-size: 8px; color: var(--cl-faint); text-transform: uppercase; }
+  .cl-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .cl-sw .box { height: 38px; border-radius: 5px; border: 1px solid rgba(16, 24, 40, .06); }
+  .cl-sw .nm { font-size: 8px; font-weight: 600; margin-top: 5px; }
+  .cl-sw .hx { font-family: var(--cl-mono); font-size: 7.5px; color: var(--cl-faint); }
+  .cl-typerow { display: flex; align-items: baseline; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--cl-line-soft); }
+  .cl-typerow:last-child { border-bottom: 0; }
+  .cl-typerow .sp { font-family: var(--cl-mono); font-size: 8px; color: var(--cl-faint); }
+  .cl-btnrow { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+  .cl-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 16px; border-top: 1px solid #d8e0e6; font-size: 9px; color: var(--cl-faint); font-weight: 500; }
+  .cl-frame-label { text-align: center; font-size: 9.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--cl-faint); margin-top: 10px; }
+  .cl-phones { display: flex; gap: 32px; align-items: flex-start; }
+  .cl-stack { display: flex; flex-direction: column; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cl-head">
+    <div>
+      <div class="cl-eyebrow">CarePlus Pharma · alternate direction</div>
+      <h1>Direction B —<br /><span>Clinical Clarity.</span></h1>
+      <p>A cooler, denser, more instrument-like language for the same ERP. Apothecary teal replaces coral, navy replaces warm ink, corners tighten to 8–12px, gradients disappear, numbers move to mono, and a persistent sidebar replaces the floating bottom nav on web.</p>
+    </div>
+    <div class="dir-badge">Design language 02</div>
+  </div>
+
+  <div class="cl-tokens">
+    <span class="cl-tok"><i style="background:#0e7c66"></i>#0E7C66</span>
+    <span class="cl-tok"><i style="background:#14324f"></i>#14324F</span>
+    <span class="cl-tok"><i style="background:#101828"></i>#101828</span>
+    <span class="cl-tok"><i style="background:#f4f6f8"></i>#F4F6F8</span>
+    <span class="cl-tok"><i style="background:#dde4ea"></i>#DDE4EA</span>
+    <span class="cl-tok"><i style="background:#175cd3"></i>#175CD3</span>
+    <span class="cl-tok"><i style="background:#b54708"></i>#B54708</span>
+    <span class="cl-tok"><i style="background:#b42318"></i>#B42318</span>
+    <span class="cl-tok">Inter + mono numerals</span>
+  </div>
+
+  <!-- ================= WEB DASHBOARD ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">B1</span>
+      <span class="board-title">Web app shell &amp; dashboard</span>
+      <span class="board-tag">Direction B</span>
+      <span class="board-note">1280 × 700 · sidebar, KPI row, chart, attention table</span>
+    </div>
+
+    <div class="cl-desktop">
+      <div class="cl-shell">
+        <aside class="cl-side">
+          <div class="cl-brand">
+            <span class="cl-mark"><i data-lucide="pill" class="i16"></i></span>
+            <span><span class="bn">CarePlus</span><br /><span class="bs">Pharma ERP</span></span>
+          </div>
+          <div class="cl-nav">
+            <div class="cl-nav-label">Workspace</div>
+            <div class="cl-nav-item active"><i data-lucide="layout-dashboard" class="i16"></i> Overview</div>
+            <div class="cl-nav-item"><i data-lucide="zap" class="i16"></i> Billing</div>
+            <div class="cl-nav-item"><i data-lucide="package" class="i16"></i> Inventory <span class="n">1.2k</span></div>
+            <div class="cl-nav-item"><i data-lucide="clipboard-list" class="i16"></i> Purchases <span class="n">12</span></div>
+            <div class="cl-nav-item"><i data-lucide="users" class="i16"></i> Parties</div>
+            <div class="cl-nav-label">Insights</div>
+            <div class="cl-nav-item"><i data-lucide="chart-no-axes-column" class="i16"></i> Reports</div>
+            <div class="cl-nav-item"><i data-lucide="landmark" class="i16"></i> GST &amp; tax</div>
+            <div class="cl-nav-item"><i data-lucide="truck" class="i16"></i> Courier</div>
+            <div class="cl-nav-item"><i data-lucide="shield-check" class="i16"></i> Audit</div>
+          </div>
+          <div class="cl-user">
+            <span class="av">VP</span>
+            <div style="flex:1;min-width:0"><div class="nm">Vivek Pawar</div><div class="rl">Owner · Pune</div></div>
+            <i data-lucide="settings-2" class="i14" style="color:var(--cl-faint)"></i>
+          </div>
+        </aside>
+
+        <div class="cl-main">
+          <div class="cl-top">
+            <div>
+              <h2>Overview</h2>
+              <div class="crumb">Wednesday, 4 November 2026 · FY 2026–27</div>
+            </div>
+            <div class="cl-top-right">
+              <div class="cl-search"><i data-lucide="search" class="i14"></i> Search invoices, products…</div>
+              <div class="cl-date"><i data-lucide="calendar-days" class="i14"></i> 1–30 Nov</div>
+              <div class="cl-iconbtn"><i data-lucide="bell" class="i14"></i></div>
+              <span class="cl-avatar">VP</span>
+            </div>
+          </div>
+
+          <div class="cl-content">
+            <div class="cl-kpis">
+              <div class="cl-kpi">
+                <div class="lab"><span>Net sales · Nov</span><i data-lucide="trending-up" class="i14" style="color:var(--cl-teal)"></i></div>
+                <div class="val">₹4,86,250</div>
+                <div class="foot"><span class="cl-delta">+12.4%</span><span>vs ₹4,32,600</span></div>
+              </div>
+              <div class="cl-kpi k2">
+                <div class="lab"><span>GST payable</span><i data-lucide="landmark" class="i14" style="color:var(--cl-blue)"></i></div>
+                <div class="val">₹38,412</div>
+                <div class="foot"><span class="cl-delta">+8.1%</span><span>CGST 19,206 · SGST 19,206</span></div>
+              </div>
+              <div class="cl-kpi k3">
+                <div class="lab"><span>Receivables</span><i data-lucide="clock-3" class="i14" style="color:var(--cl-amber)"></i></div>
+                <div class="val">₹1,24,900</div>
+                <div class="foot"><span class="cl-delta down">18 due</span><span>₹42,300 over 30 days</span></div>
+              </div>
+              <div class="cl-kpi k4">
+                <div class="lab"><span>Stock value</span><i data-lucide="package" class="i14" style="color:var(--cl-violet)"></i></div>
+                <div class="val">₹8,72,400</div>
+                <div class="foot"><span class="cl-delta down">12 alerts</span><span>1,284 batches</span></div>
+              </div>
+            </div>
+
+            <div class="cl-grid">
+              <div class="cl-card">
+                <div class="cl-card-head">
+                  <div><h3>Revenue &amp; GST</h3><div class="cl-sub">Daily collections, November 2026</div></div>
+                  <div class="cl-seg"><span>7D</span><span class="on">30D</span><span>90D</span></div>
+                </div>
+                <div class="cl-legend" style="margin-bottom:4px">
+                  <span><b style="background:#0e7c66"></b>Net sales</span>
+                  <span><b style="background:#b9d8d1"></b>GST collected</span>
+                </div>
+                <svg class="cl-chart" viewBox="0 0 700 168" preserveAspectRatio="none" aria-label="Revenue trend">
+                  <g stroke="#edf1f5" stroke-width="1">
+                    <line x1="0" y1="32" x2="700" y2="32" /><line x1="0" y1="72" x2="700" y2="72" />
+                    <line x1="0" y1="112" x2="700" y2="112" /><line x1="0" y1="152" x2="700" y2="152" />
+                  </g>
+                  <path d="M0 138 L58 126 L116 132 L174 104 L232 112 L290 84 L348 92 L406 66 L464 74 L522 48 L580 58 L638 34 L700 22 L700 168 L0 168 Z" fill="#e7f4f1" opacity=".75" />
+                  <path d="M0 138 L58 126 L116 132 L174 104 L232 112 L290 84 L348 92 L406 66 L464 74 L522 48 L580 58 L638 34 L700 22" fill="none" stroke="#0e7c66" stroke-width="2" />
+                  <path d="M0 156 L58 150 L116 153 L174 142 L232 146 L290 134 L348 138 L406 126 L464 130 L522 118 L580 122 L638 112 L700 106" fill="none" stroke="#b9d8d1" stroke-width="1.8" stroke-dasharray="3 3" />
+                  <circle cx="700" cy="22" r="3.5" fill="#0e7c66" stroke="#fff" stroke-width="2" />
+                </svg>
+                <div class="cl-axis"><span>1 Nov</span><span>5 Nov</span><span>9 Nov</span><span>13 Nov</span><span>17 Nov</span><span>21 Nov</span><span>25 Nov</span><span>30 Nov</span></div>
+              </div>
+
+              <div class="cl-card cl-today">
+                <div class="cl-card-head"><div><h3>Today at a glance</h3><div class="cl-sub">4 Nov · counter + wholesale</div></div><i data-lucide="activity" class="i16" style="color:var(--cl-teal)"></i></div>
+                <div class="row"><span class="k">Bills raised</span><span class="v">18</span></div>
+                <div class="row"><span class="k">Sales</span><span class="v">₹42,380</span></div>
+                <div class="row"><span class="k">Collected</span><span class="v">₹31,200</span></div>
+                <div class="row"><span class="k">GST</span><span class="v">₹3,640</span></div>
+                <div class="cl-target">
+                  <div style="display:flex;justify-content:space-between;font-size:8.5px;color:var(--cl-faint);margin-bottom:5px"><span>Daily target</span><span style="font-family:var(--cl-mono);color:var(--cl-ink)">68%</span></div>
+                  <div class="cl-bar"><i style="width:68%"></i></div>
+                </div>
+                <button class="cl-btn primary block" style="margin-top:12px"><i data-lucide="zap" class="i14"></i> Open billing</button>
+              </div>
+            </div>
+
+            <div class="cl-card" style="margin-top:12px">
+              <div class="cl-card-head">
+                <div><h3>Stock needing attention</h3><div class="cl-sub">12 near expiry · 7 below reorder level</div></div>
+                <span class="cl-btn ghost sm">View inventory <i data-lucide="arrow-right" class="i14"></i></span>
+              </div>
+              <table class="cl-table">
+                <thead><tr><th>Product</th><th>Batch</th><th>Expiry</th><th>On hand</th><th>Reorder</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>AMOXICILLIN CAPS 20X10</td><td class="m">AM26C</td><td class="m">03/2027</td><td class="m">0 strips</td><td class="m">50</td><td><span class="cl-pill bad">Out of stock</span></td></tr>
+                  <tr><td>ZINCOVIT TAB 10X10</td><td class="m">ZN26B</td><td class="m">11/2027</td><td class="m">12 strips</td><td class="m">40</td><td><span class="cl-pill warn">Low</span></td></tr>
+                  <tr><td>DOLO 650 TAB 10X10</td><td class="m">DL26A</td><td class="m">08/2028</td><td class="m">68 strips</td><td class="m">40</td><td><span class="cl-pill ok">Healthy</span></td></tr>
+                  <tr><td>CETIRIZINE 10MG 10X10</td><td class="m">CT26D</td><td class="m">01/2027</td><td class="m">104 strips</td><td class="m">60</td><td><span class="cl-pill warn">Expiring</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-frame-label">Persistent sidebar · flat KPI cards · data table on the first screen</div>
+  </section>
+
+  <!-- ================= MOBILE ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">B2</span>
+      <span class="board-title">Mobile dashboard &amp; purchase list</span>
+      <span class="board-tag">Direction B</span>
+      <span class="board-note">390 × 844 · flat teal summary, square tiles, status-led cards</span>
+    </div>
+
+    <div class="cl-phones">
+      <div class="cl-stack">
+        <div class="phone">
+          <div class="phone-screen cl-phone">
+            <div class="cl-status"><span>9:41</span><span class="flex gap-6"><i data-lucide="signal" class="i14"></i><i data-lucide="wifi" class="i14"></i><i data-lucide="battery-full" class="i16"></i></span></div>
+            <div class="cl-pbody">
+              <div class="cl-ptop">
+                <div>
+                  <div class="cl-psub">WEDNESDAY, 4 NOVEMBER</div>
+                  <div class="cl-ptitle">Good morning, Vivek</div>
+                </div>
+                <span class="cl-avatar">VP</span>
+              </div>
+
+              <div class="cl-today-band">
+                <div>
+                  <div class="lab">TODAY'S SALES</div>
+                  <div class="amt">₹42,380</div>
+                  <div class="meta">18 bills · 4 wholesale</div>
+                </div>
+                <div class="right">+9.8%<br />vs yesterday</div>
+              </div>
+
+              <div class="flex between" style="margin:16px 0 8px">
+                <span style="font-size:10px;font-weight:600">Quick actions</span>
+                <span style="font-size:8px;font-weight:600;color:var(--cl-teal)">Edit</span>
+              </div>
+              <div class="cl-qgrid">
+                <div class="cl-qa">
+                  <span class="qi"><i data-lucide="zap" class="i14"></i></span>
+                  <div><div class="qn">New bill</div><div class="qs">GST invoice</div></div>
+                </div>
+                <div class="cl-qa">
+                  <span class="qi" style="background:var(--cl-blue-50);color:var(--cl-blue)"><i data-lucide="file-up" class="i14"></i></span>
+                  <div><div class="qn">Import bill</div><div class="qs">Supplier PDF</div></div>
+                </div>
+                <div class="cl-qa">
+                  <span class="qi" style="background:var(--cl-violet-50);color:var(--cl-violet)"><i data-lucide="package-plus" class="i14"></i></span>
+                  <div><div class="qn">Add stock</div><div class="qs">Batch inward</div></div>
+                </div>
+                <div class="cl-qa">
+                  <span class="qi" style="background:var(--cl-amber-50);color:var(--cl-amber)"><i data-lucide="truck" class="i14"></i></span>
+                  <div><div class="qn">Courier</div><div class="qs">Track docket</div></div>
+                </div>
+              </div>
+
+              <div class="grid-2" style="margin-top:8px">
+                <div class="cl-mini-kpi"><div class="l">RECEIVABLES</div><div class="v">₹1,24,900</div><div class="d">18 invoices open</div></div>
+                <div class="cl-mini-kpi"><div class="l">STOCK ALERTS</div><div class="v">19</div><div class="d" style="color:var(--cl-amber)">12 expiry · 7 low</div></div>
+              </div>
+
+              <div class="flex between" style="margin:16px 0 4px">
+                <span style="font-size:10px;font-weight:600">Needs attention</span>
+                <span style="font-size:8px;font-weight:600;color:var(--cl-teal)">See all</span>
+              </div>
+              <div class="cl-prow">
+                <span class="cl-pill bad">Out</span>
+                <div style="flex:1;min-width:0"><div class="pn">AMOXICILLIN CAPS</div><div class="pm">AM26C · exp 03/27</div></div>
+                <span class="pv">0</span>
+              </div>
+              <div class="cl-prow">
+                <span class="cl-pill warn">Low</span>
+                <div style="flex:1;min-width:0"><div class="pn">ZINCOVIT TAB</div><div class="pm">ZN26B · exp 11/27</div></div>
+                <span class="pv">12</span>
+              </div>
+              <div class="cl-prow">
+                <span class="cl-pill warn">Exp</span>
+                <div style="flex:1;min-width:0"><div class="pn">CETIRIZINE 10MG</div><div class="pm">CT26D · exp 01/27</div></div>
+                <span class="pv">104</span>
+              </div>
+            </div>
+
+            <div class="cl-tabbar">
+              <span class="cl-tab active"><span class="ti"><i data-lucide="layout-dashboard" class="i16"></i></span>Home</span>
+              <span class="cl-tab"><span class="ti"><i data-lucide="receipt-indian-rupee" class="i16"></i></span>Sales</span>
+              <span class="cl-tab center"><i data-lucide="plus" class="i18"></i></span>
+              <span class="cl-tab"><span class="ti"><i data-lucide="package" class="i16"></i></span>Stock</span>
+              <span class="cl-tab"><span class="ti"><i data-lucide="menu" class="i16"></i></span>More</span>
+            </div>
+          </div>
+        </div>
+        <div class="cl-frame-label">Mobile dashboard</div>
+      </div>
+
+      <div class="cl-stack">
+        <div class="phone">
+          <div class="phone-screen cl-phone">
+            <div class="cl-status"><span>9:41</span><span class="flex gap-6"><i data-lucide="signal" class="i14"></i><i data-lucide="wifi" class="i14"></i><i data-lucide="battery-full" class="i16"></i></span></div>
+            <div class="cl-pbody">
+              <div class="cl-ptop">
+                <div class="flex gap-8" style="align-items:center">
+                  <span class="cl-iconbtn" style="width:28px;height:28px"><i data-lucide="arrow-left" class="i14"></i></span>
+                  <div><div class="cl-ptitle" style="font-size:16px">Purchase orders</div><div class="cl-psub">12 open · ₹3,42,800</div></div>
+                </div>
+                <span class="cl-iconbtn" style="width:28px;height:28px;color:var(--cl-teal);border-color:#b9d8d1;background:var(--cl-teal-50)"><i data-lucide="plus" class="i14"></i></span>
+              </div>
+
+              <div class="cl-input grow" style="width:100%;max-width:none;height:34px"><i data-lucide="search" class="i14"></i> Search PO, supplier or product…</div>
+
+              <div class="flex gap-6" style="margin-top:9px;overflow:hidden">
+                <span class="cl-chip on">All</span>
+                <span class="cl-chip">Draft</span>
+                <span class="cl-chip">Sent</span>
+                <span class="cl-chip">Partial</span>
+              </div>
+
+              <div style="margin-top:14px">
+                <div style="border:1px solid var(--cl-line);border-left:3px solid var(--cl-amber);border-radius:7px;padding:11px;background:#fff">
+                  <div class="flex between">
+                    <span style="font-family:var(--cl-mono);font-size:9.5px;font-weight:600">PO-2026-0148</span>
+                    <span class="cl-pill warn">Partial</span>
+                  </div>
+                  <div style="font-size:9px;color:var(--cl-muted);margin-top:3px">MedPlus Distributors</div>
+                  <div class="flex between" style="margin-top:9px">
+                    <span style="font-size:8px;color:var(--cl-faint)">9 of 14 received · due 6 Nov</span>
+                    <span style="font-family:var(--cl-mono);font-size:11px;font-weight:600">₹1,42,800</span>
+                  </div>
+                  <div class="cl-bar" style="margin-top:6px"><i style="width:64%"></i></div>
+                </div>
+
+                <div style="border:1px solid var(--cl-line);border-left:3px solid var(--cl-blue);border-radius:7px;padding:11px;background:#fff;margin-top:7px">
+                  <div class="flex between">
+                    <span style="font-family:var(--cl-mono);font-size:9.5px;font-weight:600">PO-2026-0147</span>
+                    <span class="cl-pill info">Sent</span>
+                  </div>
+                  <div style="font-size:9px;color:var(--cl-muted);margin-top:3px">Sanjivani Agencies</div>
+                  <div class="flex between" style="margin-top:9px">
+                    <span style="font-size:8px;color:var(--cl-faint)">8 lines · due 5 Nov</span>
+                    <span style="font-family:var(--cl-mono);font-size:11px;font-weight:600">₹68,450</span>
+                  </div>
+                </div>
+
+                <div style="border:1px solid var(--cl-line);border-left:3px solid var(--cl-teal);border-radius:7px;padding:11px;background:#fff;margin-top:7px">
+                  <div class="flex between">
+                    <span style="font-family:var(--cl-mono);font-size:9.5px;font-weight:600">PO-2026-0146</span>
+                    <span class="cl-pill ok">Received</span>
+                  </div>
+                  <div style="font-size:9px;color:var(--cl-muted);margin-top:3px">Carewell Pharma</div>
+                  <div class="flex between" style="margin-top:9px">
+                    <span style="font-size:8px;color:var(--cl-faint)">21 lines · 2 Nov</span>
+                    <span style="font-family:var(--cl-mono);font-size:11px;font-weight:600">₹2,18,900</span>
+                  </div>
+                </div>
+
+                <div style="border:1px solid var(--cl-line);border-left:3px solid #c8d0d8;border-radius:7px;padding:11px;background:#fff;margin-top:7px">
+                  <div class="flex between">
+                    <span style="font-family:var(--cl-mono);font-size:9.5px;font-weight:600">PO-2026-0145</span>
+                    <span class="cl-pill neutral">Draft</span>
+                  </div>
+                  <div style="font-size:9px;color:var(--cl-muted);margin-top:3px">Global Medico</div>
+                  <div class="flex between" style="margin-top:9px">
+                    <span style="font-size:8px;color:var(--cl-faint)">6 lines · not sent</span>
+                    <span style="font-family:var(--cl-mono);font-size:11px;font-weight:600">₹39,600</span>
+                  </div>
+                </div>
+
+                <div class="flex between" style="margin:14px 0 2px">
+                  <span style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cl-faint)">Earlier this week</span>
+                  <span style="font-size:8px;font-weight:600;color:var(--cl-teal)">See all</span>
+                </div>
+                <div class="cl-prow">
+                  <div style="flex:1;min-width:0"><div class="pn" style="font-family:var(--cl-mono);font-size:9px">PO-2026-0144</div><div class="pm">Ashirwad Medicals · 30 Oct</div></div>
+                  <span class="cl-pill bad">Overdue</span>
+                  <span class="pv">₹96,250</span>
+                </div>
+                <div class="cl-prow">
+                  <div style="flex:1;min-width:0"><div class="pn" style="font-family:var(--cl-mono);font-size:9px">PO-2026-0143</div><div class="pm">Sai Pharma · 29 Oct</div></div>
+                  <span class="cl-pill ok">Received</span>
+                  <span class="pv">₹54,120</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="cl-tabbar">
+              <span class="cl-tab"><span class="ti"><i data-lucide="layout-dashboard" class="i16"></i></span>Home</span>
+              <span class="cl-tab"><span class="ti"><i data-lucide="receipt-indian-rupee" class="i16"></i></span>Sales</span>
+              <span class="cl-tab center"><i data-lucide="plus" class="i18"></i></span>
+              <span class="cl-tab active"><span class="ti"><i data-lucide="clipboard-list" class="i16"></i></span>Purchase</span>
+              <span class="cl-tab"><span class="ti"><i data-lucide="menu" class="i16"></i></span>More</span>
+            </div>
+          </div>
+        </div>
+        <div class="cl-frame-label">Purchase list</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIST + OVERLAY ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">B3</span>
+      <span class="board-title">Table page &amp; receive-stock panel</span>
+      <span class="board-tag">Direction B</span>
+      <span class="board-note">1280 × 600 · dense table, right-side sheet, dimmed backdrop</span>
+    </div>
+
+    <div class="cl-desktop" style="height:600px">
+      <div class="cl-pagebar">
+        <div class="l">
+          <span class="cl-iconbtn"><i data-lucide="arrow-left" class="i14"></i></span>
+          <div><h2>Purchase orders</h2><div class="b">12 open · 4 partially received · 3 due today</div></div>
+        </div>
+        <div class="flex gap-6">
+          <span class="cl-btn ghost sm"><i data-lucide="download" class="i14"></i> Export</span>
+          <span class="cl-btn primary sm"><i data-lucide="plus" class="i14"></i> New PO</span>
+        </div>
+      </div>
+
+      <div class="cl-filterbar">
+        <div class="cl-input grow"><i data-lucide="search" class="i14"></i> Search PO number, supplier or product…</div>
+        <span class="cl-chip on">All 12</span>
+        <span class="cl-chip">Draft</span>
+        <span class="cl-chip">Sent</span>
+        <span class="cl-chip">Partial</span>
+        <span class="cl-chip">Received</span>
+        <span style="margin-left:auto" class="cl-chip"><i data-lucide="sliders-horizontal" class="i14"></i> Filters</span>
+        <span class="cl-chip"><i data-lucide="calendar" class="i14"></i> This month</span>
+      </div>
+
+      <div class="cl-tablewrap">
+        <table class="cl-table">
+          <thead><tr><th>Purchase order</th><th>Supplier</th><th>Lines</th><th>Value</th><th>Expected</th><th>Status</th><th style="text-align:right">Actions</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0148</div><div class="s">4 Nov 2026</div></div></div></td>
+              <td><div style="font-weight:600">MedPlus Distributors</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AABCM1234F1Z2</div></td>
+              <td class="m">14</td><td class="m" style="font-weight:600">₹1,42,800</td><td class="m">6 Nov</td><td><span class="cl-pill warn">Partial</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0147</div><div class="s">3 Nov 2026</div></div></div></td>
+              <td><div style="font-weight:600">Sanjivani Agencies</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AAECS5678G1Z9</div></td>
+              <td class="m">8</td><td class="m" style="font-weight:600">₹68,450</td><td class="m">5 Nov</td><td><span class="cl-pill info">Sent</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0146</div><div class="s">2 Nov 2026</div></div></div></td>
+              <td><div style="font-weight:600">Carewell Pharma</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AACCC9012H1Z4</div></td>
+              <td class="m">21</td><td class="m" style="font-weight:600">₹2,18,900</td><td class="m">7 Nov</td><td><span class="cl-pill ok">Received</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0145</div><div class="s">1 Nov 2026</div></div></div></td>
+              <td><div style="font-weight:600">Global Medico</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AAFCG3456K1Z7</div></td>
+              <td class="m">6</td><td class="m" style="font-weight:600">₹39,600</td><td class="m">9 Nov</td><td><span class="cl-pill neutral">Draft</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0144</div><div class="s">30 Oct 2026</div></div></div></td>
+              <td><div style="font-weight:600">Ashirwad Medicals</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AAJCA7890L1Z3</div></td>
+              <td class="m">17</td><td class="m" style="font-weight:600">₹96,250</td><td class="m">2 Nov</td><td><span class="cl-pill bad">Overdue</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0143</div><div class="s">29 Oct 2026</div></div></div></td>
+              <td><div style="font-weight:600">Sai Pharma Distributors</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AAKCS1122M1Z8</div></td>
+              <td class="m">11</td><td class="m" style="font-weight:600">₹54,120</td><td class="m">28 Oct</td><td><span class="cl-pill ok">Received</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0142</div><div class="s">27 Oct 2026</div></div></div></td>
+              <td><div style="font-weight:600">Nova Healthcare</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AABCN4455P1Z1</div></td>
+              <td class="m">9</td><td class="m" style="font-weight:600">₹72,300</td><td class="m">4 Nov</td><td><span class="cl-pill info">Sent</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0141</div><div class="s">26 Oct 2026</div></div></div></td>
+              <td><div style="font-weight:600">Curewell Agencies</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AAGCC6633R1Z5</div></td>
+              <td class="m">5</td><td class="m" style="font-weight:600">₹28,940</td><td class="m">30 Oct</td><td><span class="cl-pill neutral">Draft</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+            <tr>
+              <td><div class="cl-po"><div><div class="m">PO-2026-0140</div><div class="s">24 Oct 2026</div></div></div></td>
+              <td><div style="font-weight:600">MedPlus Distributors</div><div class="s" style="font-family:var(--cl-mono);font-size:8px;color:var(--cl-faint);margin-top:1px">27AABCM1234F1Z2</div></td>
+              <td class="m">16</td><td class="m" style="font-weight:600">₹1,86,540</td><td class="m">27 Oct</td><td><span class="cl-pill bad">Overdue</span></td>
+              <td><div class="cl-rowact"><span><i data-lucide="share-2" class="i14"></i></span><span><i data-lucide="download" class="i14"></i></span><span class="danger"><i data-lucide="trash-2" class="i14"></i></span></div></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex between" style="padding:9px 12px;border-top:1px solid var(--cl-line);font-size:9px;color:var(--cl-faint)">
+          <span>Showing 1–9 of 28</span>
+          <span class="flex gap-6"><span class="cl-chip" style="height:24px">Previous</span><span class="cl-chip on" style="height:24px">1</span><span class="cl-chip" style="height:24px">2</span><span class="cl-chip" style="height:24px">3</span><span class="cl-chip" style="height:24px">Next</span></span>
+        </div>
+      </div>
+
+      <div class="cl-overlay">
+        <div class="cl-modal">
+          <div class="flex between" style="align-items:flex-start">
+            <div><h3>Receive stock</h3><div class="muted">PO-2026-0148 · MedPlus Distributors</div></div>
+            <i data-lucide="x" class="i16" style="color:var(--cl-faint)"></i>
+          </div>
+          <div class="cl-note" style="margin-top:14px"><i data-lucide="info" class="i14"></i><span>9 of 14 lines already received. Remaining stock will be added to batch DL26A.</span></div>
+
+          <div class="cl-field"><label>Product</label><div class="box">DOLO 650 TAB · 10 × 10</div></div>
+          <div class="grid-2" style="gap:8px">
+            <div class="cl-field"><label>Batch no.</label><div class="box focus">DL26A</div></div>
+            <div class="cl-field"><label>Expiry</label><div class="box">08 / 2028</div></div>
+          </div>
+          <div class="grid-2" style="gap:8px">
+            <div class="cl-field"><label>Received qty</label><div class="box">1</div><div class="hint">boxes · 10 strips</div></div>
+            <div class="cl-field"><label>Free qty</label><div class="box" style="color:var(--cl-faint)">0</div><div class="hint">not charged</div></div>
+          </div>
+          <div class="grid-2" style="gap:8px">
+            <div class="cl-field"><label>Rate / box</label><div class="box" style="font-family:var(--cl-mono)">₹950.00</div></div>
+            <div class="cl-field"><label>MRP / strip</label><div class="box" style="font-family:var(--cl-mono)">₹150.00</div></div>
+          </div>
+          <div class="cl-note" style="margin-top:13px;background:var(--cl-bg);border-color:var(--cl-line);color:var(--cl-muted)"><i data-lucide="arrow-left-right" class="i14"></i><span>Adds 10 strips at ₹95.00 / strip · line value ₹950.00</span></div>
+          <div class="flex gap-6" style="margin-top:16px">
+            <span class="cl-btn ghost" style="flex:1">Cancel</span>
+            <span class="cl-btn primary" style="flex:1"><i data-lucide="check" class="i14"></i> Receive</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cl-frame-label">Table-first page with a right-side receiving sheet</div>
+  </section>
+
+  <!-- ================= PRIMITIVES ================= -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">B4</span>
+      <span class="board-title">Primitives</span>
+      <span class="board-tag">Direction B</span>
+      <span class="board-note">Tokens, type, controls, status language</span>
+    </div>
+
+    <div class="cl-lib">
+      <div class="cl-spec span2">
+        <div class="cl-spec-head"><span class="t">Colour</span><span class="m">Teal / navy / neutral</span></div>
+        <div class="cl-swatches">
+          <div class="cl-sw"><div class="box" style="background:#0e7c66"></div><div class="nm">Teal 600</div><div class="hx">#0E7C66</div></div>
+          <div class="cl-sw"><div class="box" style="background:#0a6353"></div><div class="nm">Teal 700</div><div class="hx">#0A6353</div></div>
+          <div class="cl-sw"><div class="box" style="background:#14324f"></div><div class="nm">Navy</div><div class="hx">#14324F</div></div>
+          <div class="cl-sw"><div class="box" style="background:#101828"></div><div class="nm">Ink</div><div class="hx">#101828</div></div>
+          <div class="cl-sw"><div class="box" style="background:#667085"></div><div class="nm">Muted</div><div class="hx">#667085</div></div>
+          <div class="cl-sw"><div class="box" style="background:#f4f6f8"></div><div class="nm">Canvas</div><div class="hx">#F4F6F8</div></div>
+          <div class="cl-sw"><div class="box" style="background:#dde4ea"></div><div class="nm">Border</div><div class="hx">#DDE4EA</div></div>
+          <div class="cl-sw"><div class="box" style="background:#175cd3"></div><div class="nm">Blue</div><div class="hx">#175CD3</div></div>
+          <div class="cl-sw"><div class="box" style="background:#b54708"></div><div class="nm">Amber</div><div class="hx">#B54708</div></div>
+          <div class="cl-sw"><div class="box" style="background:#b42318"></div><div class="nm">Red</div><div class="hx">#B42318</div></div>
+        </div>
+      </div>
+
+      <div class="cl-spec span2">
+        <div class="cl-spec-head"><span class="t">Typography</span><span class="m">Inter · mono numerals</span></div>
+        <div class="cl-typerow"><span style="font-size:26px;font-weight:700;letter-spacing:-.04em">Overview</span><span class="sp">26 / 700</span></div>
+        <div class="cl-typerow"><span style="font-size:16px;font-weight:700;letter-spacing:-.02em">Purchase orders</span><span class="sp">16 / 700</span></div>
+        <div class="cl-typerow"><span style="font-size:11.5px;font-weight:600">Section label</span><span class="sp">11.5 / 600</span></div>
+        <div class="cl-typerow"><span style="font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#667085">TABLE HEADER</span><span class="sp">9 / 600</span></div>
+        <div class="cl-typerow"><span style="font-family:var(--cl-mono);font-size:18px;font-weight:600;letter-spacing:-.03em">₹4,86,250.00</span><span class="sp">MONO 18 / 600</span></div>
+      </div>
+
+      <div class="cl-spec span2">
+        <div class="cl-spec-head"><span class="t">Buttons &amp; controls</span><span class="m">6px radius · 32px</span></div>
+        <div class="cl-btnrow">
+          <span class="cl-btn primary"><i data-lucide="plus" class="i14"></i> Primary</span>
+          <span class="cl-btn ghost"><i data-lucide="download" class="i14"></i> Secondary</span>
+          <span class="cl-btn" style="background:var(--cl-navy);color:#fff">Dark</span>
+          <span class="cl-btn" style="background:var(--cl-red-50);color:var(--cl-red);border-color:#f3c9c5">Delete</span>
+          <span class="cl-btn ghost sm">Small</span>
+          <span class="cl-iconbtn"><i data-lucide="share-2" class="i14"></i></span>
+        </div>
+        <div class="cl-btnrow" style="margin-top:10px">
+          <span class="cl-chip on">All 12</span><span class="cl-chip">Draft</span><span class="cl-chip">Sent</span>
+          <span class="cl-pill ok">Received</span><span class="cl-pill warn">Partial</span><span class="cl-pill bad">Overdue</span><span class="cl-pill info">Sent</span>
+        </div>
+        <div class="cl-btnrow" style="margin-top:10px">
+          <span style="width:34px;height:19px;border-radius:10px;background:var(--cl-teal);position:relative;display:inline-block"><i style="position:absolute;right:2px;top:2px;width:15px;height:15px;border-radius:50%;background:#fff;display:block"></i></span>
+          <span style="width:34px;height:19px;border-radius:10px;background:#d0d5dd;position:relative;display:inline-block"><i style="position:absolute;left:2px;top:2px;width:15px;height:15px;border-radius:50%;background:#fff;display:block"></i></span>
+          <span style="font-size:9px;color:var(--cl-muted)">Auto-sync</span>
+        </div>
+      </div>
+
+      <div class="cl-spec span2">
+        <div class="cl-spec-head"><span class="t">Table row &amp; feedback</span><span class="m">Density: compact</span></div>
+        <table class="cl-table" style="border:1px solid var(--cl-line);border-radius:6px;overflow:hidden">
+          <thead><tr><th>Product</th><th>Batch</th><th>On hand</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td style="font-weight:600">DOLO 650 TAB</td><td class="m">DL26A</td><td class="m">68 strips</td><td><span class="cl-pill ok">Healthy</span></td></tr>
+            <tr><td style="font-weight:600">ZINCOVIT TAB</td><td class="m">ZN26B</td><td class="m">12 strips</td><td><span class="cl-pill warn">Low stock</span></td></tr>
+          </tbody>
+        </table>
+        <div class="cl-note" style="margin-top:10px"><i data-lucide="circle-check" class="i14"></i><span>PDF total ₹2,850 matches the supplier bill.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cl-foot">
+    <span>CarePlus Pharma · Direction B “Clinical Clarity” · November 2026</span>
+    <span>Cool neutrals · apothecary teal · Inter + mono numerals · 6–12px radii · flat elevation</span>
+  </div>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

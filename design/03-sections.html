@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Section templates</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .anatomy { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .anatomy span { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; font-weight: 700; color: var(--xp-ink-soft); background: #fff; border: 1px solid var(--xp-card-border); padding: 7px 11px; border-radius: 99px; }
+  .anatomy b { width: 16px; height: 16px; border-radius: 5px; background: var(--xp-accent); color: #fff; font-size: 9px; display: grid; place-items: center; }
+  .frame-label { text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 12px; }
+  .stack { display: flex; flex-direction: column; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 340px; gap: 14px; }
+  .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+  .sec-title { display: flex; align-items: center; gap: 8px; }
+  .sec-ico { width: 28px; height: 28px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+  .sec-link { font-size: 9px; font-weight: 800; color: var(--xp-accent); display: inline-flex; align-items: center; gap: 3px; }
+  .kv { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; font-size: 10px; }
+  .kv .k { font-weight: 600; color: var(--muted); }
+  .kv .v { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .batch-hero { border-radius: 24px; border: 1px solid #f0dfd3; padding: 18px; background: radial-gradient(320px 200px at 92% 0%, rgba(249,144,111,.35), transparent 70%), linear-gradient(120deg,#fff8f3,#f7f1ff); }
+  .gauge { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--xp-accent) 0 68%, #f2e6dc 68% 100%); flex: none; }
+  .gauge div { width: 56px; height: 56px; border-radius: 50%; background: #fffdfb; display: grid; place-items: center; text-align: center; }
+  .warehouse { display: flex; align-items: center; justify-content: space-between; padding: 9px 11px; border-radius: 13px; background: #fff; border: 1px solid #f4ece5; }
+  .warehouse + .warehouse { margin-top: 6px; }
+  .accordion-item { border: 1px solid var(--xp-card-border); border-radius: 18px; background: #fff; overflow: hidden; }
+  .accordion-item + .accordion-item { margin-top: 8px; }
+  .accordion-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 13px; }
+  .accordion-body { padding: 0 13px 13px; }
+  .doc-chip { display: flex; align-items: center; gap: 8px; border: 1px solid #f3e9e0; border-radius: 13px; padding: 8px 10px; background: #fffdfb; }
+  .doc-chip + .doc-chip { margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">CarePlus Pharma · UI system</div>
+      <h1 class="page-title">Section &amp; subsection templates</h1>
+      <p class="page-sub">Detail screens are built from sections (26px cards with an icon, title and one coral link) and subsections (16px tinted panels for grouped facts). The right rail holds the short, action-oriented blocks.</p>
+    </div>
+    <div class="board-tag">03 / 05</div>
+  </div>
+
+  <div class="anatomy">
+    <span><b>1</b> Page header</span>
+    <span><b>2</b> Summary hero</span>
+    <span><b>3</b> Tab row</span>
+    <span><b>4</b> Section card</span>
+    <span><b>5</b> Subsection panel</span>
+    <span><b>6</b> Right rail</span>
+  </div>
+
+  <!-- ============ DESKTOP DETAIL PAGE ============ -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">05</span>
+      <span class="board-title">Detail page · Batch stock</span>
+      <span class="board-tag">Web</span>
+      <span class="board-note">1280 × 960 · summary hero, tabs, two-column section grid</span>
+    </div>
+
+    <div class="desktop" style="height:960px">
+      <div class="desktop-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="desktop-url">app.careplus.pharma / master-center / batch-stocks / DL26A</span>
+      </div>
+      <div class="desktop-body">
+        <div class="app-topbar" style="padding-bottom:8px">
+          <div class="brand">
+            <span class="brand-mark" style="width:32px;height:32px"><i data-lucide="pill" class="i16"></i></span>
+            <span><span class="brand-name">CarePlus</span><br /><span class="brand-sub">Pharma ERP</span></span>
+          </div>
+          <div class="flex gap-10">
+            <span class="chip green"><i data-lucide="cloud-check" class="i14"></i> Backed up 09:38</span>
+            <span class="icon-btn"><i data-lucide="bell" class="i16"></i></span>
+            <span class="avatar" style="background:var(--xp-ink);color:#fff">VP</span>
+          </div>
+        </div>
+
+        <div class="breadcrumb"><span>Master Center</span><i data-lucide="chevron-right" class="i14"></i><span>Batch Stocks</span><i data-lucide="chevron-right" class="i14"></i><b>DL26A</b></div>
+
+        <div class="page-head-row">
+          <div class="flex gap-10" style="align-items:flex-start">
+            <span class="back-btn"><i data-lucide="arrow-left" class="i16"></i></span>
+            <div>
+              <div class="flex gap-8">
+                <h2 class="h2">DOLO 650 TAB</h2>
+                <span class="chip green" style="align-self:center"><i data-lucide="circle-check" class="i14"></i> Healthy</span>
+              </div>
+              <p class="tiny muted" style="margin:5px 0 0">Batch DL26A · 10 × 10 strips · Paracetamol 650 mg · HSN 300490</p>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <span class="btn ghost"><i data-lucide="printer" class="i14"></i> Print label</span>
+            <span class="btn ghost"><i data-lucide="pencil" class="i14"></i> Edit</span>
+            <span class="btn primary"><i data-lucide="arrow-left-right" class="i14"></i> Adjust stock</span>
+          </div>
+        </div>
+
+        <div class="batch-hero mt-14">
+          <div class="flex between" style="align-items:flex-start">
+            <div>
+              <div class="micro muted" style="letter-spacing:.1em">ON HAND</div>
+              <div class="flex gap-10" style="align-items:baseline;margin-top:4px">
+                <span class="num" style="font-size:30px;font-weight:800;letter-spacing:-.04em">68</span>
+                <span class="tiny muted" style="font-weight:700">strips · 6.8 boxes</span>
+              </div>
+              <div class="flex gap-14" style="gap:18px;margin-top:12px">
+                <div><div class="micro muted">MRP</div><div class="tiny" style="font-weight:800">₹150.00</div></div>
+                <div><div class="micro muted">PURCHASE RATE</div><div class="tiny" style="font-weight:800">₹9.50 / strip</div></div>
+                <div><div class="micro muted">STOCK VALUE</div><div class="tiny" style="font-weight:800">₹6,460</div></div>
+                <div><div class="micro muted">EXPIRY</div><div class="tiny" style="font-weight:800">Aug 2028</div></div>
+              </div>
+            </div>
+            <div class="gauge">
+              <div>
+                <div>
+                  <div style="font-size:14px;font-weight:800;line-height:1">68%</div>
+                  <div class="micro muted" style="font-size:7px">of reorder</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs mt-14">
+          <span class="on">Overview</span>
+          <span>Movement</span>
+          <span>Purchases</span>
+          <span>Sales</span>
+          <span>Adjustments</span>
+        </div>
+
+        <div class="detail-grid mt-14">
+          <!-- left column -->
+          <div>
+            <div class="section-card">
+              <div class="sec-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="boxes" class="i14"></i></span>
+                  <span class="h3">Stock distribution</span>
+                </div>
+                <span class="sec-link">View ledger <i data-lucide="chevron-right" class="i14"></i></span>
+              </div>
+
+              <div class="subsection">
+                <div class="flex between" style="margin-bottom:6px">
+                  <span class="tiny" style="font-weight:800">Main warehouse · Rack B-05</span>
+                  <span class="chip green">48 strips</span>
+                </div>
+                <div class="progress"><i style="width:70%"></i></div>
+              </div>
+              <div class="subsection">
+                <div class="flex between" style="margin-bottom:6px">
+                  <span class="tiny" style="font-weight:800">Counter display · Rack A-01</span>
+                  <span class="chip amber">20 strips</span>
+                </div>
+                <div class="progress"><i style="width:30%;background:var(--xp-violet)"></i></div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="sec-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="history" class="i14"></i></span>
+                  <span class="h3">Recent movement</span>
+                </div>
+                <span class="sec-link">All 42 entries <i data-lucide="chevron-right" class="i14"></i></span>
+              </div>
+
+              <div class="timeline">
+                <div class="tl-item done">
+                  <div class="flex between">
+                    <span class="tl-t">Sale · INV-2419</span>
+                    <span class="tiny" style="font-weight:800">−10 strips</span>
+                  </div>
+                  <div class="tl-d">Sharma Medical Store · today 11:42</div>
+                </div>
+                <div class="tl-item done">
+                  <div class="flex between">
+                    <span class="tl-t">Purchase inward · PO-0148</span>
+                    <span class="tiny" style="font-weight:800;color:#1c8a54">+100 strips</span>
+                  </div>
+                  <div class="tl-d">MedPlus Distributors · 30 Oct 16:10</div>
+                </div>
+                <div class="tl-item done">
+                  <div class="flex between">
+                    <span class="tl-t">Sale · INV-2402</span>
+                    <span class="tiny" style="font-weight:800">−22 strips</span>
+                  </div>
+                  <div class="tl-d">City Hospital · 28 Oct 09:05</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="sec-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="shopping-cart" class="i14"></i></span>
+                  <span class="h3">Reorder suggestion</span>
+                </div>
+                <span class="sec-link">Create PO <i data-lucide="chevron-right" class="i14"></i></span>
+              </div>
+              <div class="subsection" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                <div>
+                  <div class="tiny" style="font-weight:800">Order 40 strips · 4 boxes</div>
+                  <div class="micro muted" style="margin-top:2px">At ₹9.50 / strip · est. ₹3,800 + GST</div>
+                </div>
+                <span class="btn primary sm"><i data-lucide="plus" class="i14"></i> Add to PO</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- right rail -->
+          <div>
+            <div class="section-card">
+              <div class="sec-head" style="margin-bottom:6px">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="badge-indian-rupee" class="i14"></i></span>
+                  <span class="h4">Pricing &amp; tax</span>
+                </div>
+              </div>
+              <div class="kv"><span class="k">GST slab</span><span class="v">5% · CGST 2.5 + SGST 2.5</span></div>
+              <div class="kv"><span class="k">HSN</span><span class="v">300490</span></div>
+              <div class="kv"><span class="k">Margin</span><span class="v" style="color:#1c8a54">+21.4%</span></div>
+              <div class="kv"><span class="k">Reorder level</span><span class="v">40 strips</span></div>
+              <div class="note-strip info mt-6"><i data-lucide="info" class="i14"></i> Below reorder level in ~9 days at current run rate.</div>
+            </div>
+
+            <div class="section-card">
+              <div class="sec-head" style="margin-bottom:6px">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="truck" class="i14"></i></span>
+                  <span class="h4">Supplier</span>
+                </div>
+              </div>
+              <div class="flex gap-10">
+                <span class="avatar" style="background:var(--xp-tint-green);color:#1c8a54">MD</span>
+                <div style="flex:1;min-width:0">
+                  <div class="tiny" style="font-weight:800">MedPlus Distributors</div>
+                  <div class="micro muted">27AABCM1234F1Z2 · Pune</div>
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="kv"><span class="k">Last purchase</span><span class="v">30 Oct · ₹9,500</span></div>
+              <div class="kv"><span class="k">Avg. lead time</span><span class="v">3 days</span></div>
+            </div>
+
+            <div class="section-card">
+              <div class="sec-head" style="margin-bottom:6px">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="paperclip" class="i14"></i></span>
+                  <span class="h4">Attachments</span>
+                </div>
+                <span class="sec-link">Add</span>
+              </div>
+              <div class="doc-chip">
+                <i data-lucide="file-text" class="i16" style="color:var(--xp-accent)"></i>
+                <div style="flex:1;min-width:0">
+                  <div class="tiny" style="font-weight:800">Purchase bill · Oct 2026</div>
+                  <div class="micro muted">PDF · 248 KB</div>
+                </div>
+                <i data-lucide="download" class="i14" style="color:var(--muted)"></i>
+              </div>
+              <div class="doc-chip">
+                <i data-lucide="image" class="i16" style="color:#5b3fd1"></i>
+                <div style="flex:1;min-width:0">
+                  <div class="tiny" style="font-weight:800">Batch photo</div>
+                  <div class="micro muted">JPG · 1.2 MB</div>
+                </div>
+                <i data-lucide="download" class="i14" style="color:var(--muted)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOBILE ACCORDION ============ -->
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">06</span>
+      <span class="board-title">Collapsible sections &amp; subsections</span>
+      <span class="board-tag">APK</span>
+      <span class="board-note">390 × 844 · accordion sections keep long detail pages scannable</span>
+    </div>
+
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="statusbar">
+          <span>9:41</span>
+          <span class="right"><i data-lucide="signal" class="i14"></i><i data-lucide="wifi" class="i14"></i><i data-lucide="battery-full" class="i16"></i></span>
+        </div>
+        <div class="phone-body" style="padding-top:2px">
+          <div class="flex between" style="padding:2px 0 12px">
+            <div class="flex gap-10">
+              <span class="back-btn"><i data-lucide="arrow-left" class="i16"></i></span>
+              <div>
+                <h3 class="h3">Batch DL26A</h3>
+                <div class="micro muted" style="margin-top:2px">DOLO 650 TAB</div>
+              </div>
+            </div>
+            <span class="icon-round"><i data-lucide="ellipsis" class="i16"></i></span>
+          </div>
+
+          <div class="card" style="padding:14px;background:linear-gradient(140deg,#fff7f2,#f6f0ff);border-color:#f2e1d6">
+            <div class="flex between">
+              <span class="chip green"><i data-lucide="circle-check" class="i14"></i> Healthy</span>
+              <span class="micro muted">Exp Aug 2028</span>
+            </div>
+            <div class="flex gap-10" style="align-items:baseline;margin-top:9px">
+              <span class="num" style="font-size:26px;font-weight:800;letter-spacing:-.04em">68</span>
+              <span class="tiny muted" style="font-weight:700">strips on hand</span>
+            </div>
+            <div class="progress mt-10"><i style="width:68%"></i></div>
+          </div>
+
+          <div class="mt-14">
+            <div class="accordion-item">
+              <div class="accordion-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-blue);color:#2456c4"><i data-lucide="boxes" class="i14"></i></span>
+                  <div>
+                    <div class="tiny" style="font-weight:800">Stock distribution</div>
+                    <div class="micro muted">2 locations · 68 strips</div>
+                  </div>
+                </div>
+                <i data-lucide="chevron-up" class="i16" style="color:var(--muted)"></i>
+              </div>
+              <div class="accordion-body">
+                <div class="warehouse">
+                  <div>
+                    <div class="micro" style="font-weight:800">Main warehouse · B-05</div>
+                    <div class="micro muted">Primary picking location</div>
+                  </div>
+                  <span class="chip green">48</span>
+                </div>
+                <div class="warehouse">
+                  <div>
+                    <div class="micro" style="font-weight:800">Counter display · A-01</div>
+                    <div class="micro muted">Retail shelf</div>
+                  </div>
+                  <span class="chip amber">20</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-red);color:var(--xp-accent)"><i data-lucide="history" class="i14"></i></span>
+                  <div>
+                    <div class="tiny" style="font-weight:800">Recent movement</div>
+                    <div class="micro muted">42 entries this quarter</div>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="i16" style="color:var(--muted)"></i>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-violet);color:#5b3fd1"><i data-lucide="badge-indian-rupee" class="i14"></i></span>
+                  <div>
+                    <div class="tiny" style="font-weight:800">Pricing &amp; tax</div>
+                    <div class="micro muted">₹9.50 / strip · GST 5%</div>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="i16" style="color:var(--muted)"></i>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-head">
+                <div class="sec-title">
+                  <span class="sec-ico" style="background:var(--xp-tint-green);color:#1c8a54"><i data-lucide="truck" class="i14"></i></span>
+                  <div>
+                    <div class="tiny" style="font-weight:800">Supplier &amp; purchase</div>
+                    <div class="micro muted">MedPlus Distributors · 30 Oct</div>
+                  </div>
+                </div>
+                <i data-lucide="chevron-down" class="i16" style="color:var(--muted)"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="note-strip mt-14"><i data-lucide="triangle-alert" class="i14"></i> Below reorder level in ~9 days at current run rate.</div>
+
+          <div class="accordion-item mt-10">
+            <div class="accordion-head">
+              <div class="sec-title">
+                <span class="sec-ico" style="background:var(--xp-tint-amber);color:#a86400"><i data-lucide="paperclip" class="i14"></i></span>
+                <div>
+                  <div class="tiny" style="font-weight:800">Attachments</div>
+                  <div class="micro muted">Purchase bill · batch photo</div>
+                </div>
+              </div>
+              <i data-lucide="chevron-down" class="i16" style="color:var(--muted)"></i>
+            </div>
+          </div>
+
+          <div class="micro muted" style="text-align:center;margin-top:12px">Last updated 4 Nov 2026 · 11:42</div>
+        </div>
+
+        <div class="bottomnav">
+          <span class="nav-item"><span class="nav-ico"><i data-lucide="house" class="i18"></i></span>Home</span>
+          <span class="nav-item active"><span class="nav-ico"><i data-lucide="package" class="i18"></i></span>Stock</span>
+          <span class="nav-search"><i data-lucide="search" class="i16"></i> Search…</span>
+          <span class="nav-item"><span class="nav-ico"><i data-lucide="clipboard-list" class="i18"></i></span>Purchase</span>
+          <span class="nav-menu"><i data-lucide="layout-grid" class="i18"></i></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>

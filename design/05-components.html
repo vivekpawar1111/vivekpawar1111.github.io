@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>CarePlus · Component library</title>
+<link rel="stylesheet" href="ui-kit.css" />
+<style>
+  .lib { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+  .spec-card { background: #fff; border: 1px solid var(--xp-card-border); border-radius: 24px; padding: 18px; box-shadow: 0 12px 30px -28px rgba(88,51,30,.55); }
+  .spec-card.span-2 { grid-column: span 2; }
+  .spec-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+  .spec-head .h4 { font-size: 13px; }
+  .spec-head .tag { font-size: 8.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .swatches { grid-template-columns: repeat(4, 1fr); }
+  .swatch .sw { height: 46px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .icon-set { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .icon-tile { aspect-ratio: 1; border-radius: 13px; border: 1px solid #f4ece5; background: #fffdfb; display: grid; place-items: center; color: var(--xp-ink-soft); }
+  .demo-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px dashed #f2e7dd; }
+  .demo-row:last-child { border-bottom: 0; }
+  .radius-demo { display: flex; gap: 10px; align-items: flex-end; }
+  .radius-box { flex: 1; height: 58px; background: linear-gradient(140deg,#fff3ec,#f2ecfe); border: 1px solid #f0e1d6; display: grid; place-items: center; font-size: 8.5px; font-weight: 800; color: var(--muted); }
+  .shadow-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .shadow-box { height: 56px; border-radius: 16px; background: #fff; display: grid; place-items: center; font-size: 8px; font-weight: 800; color: var(--muted); }
+  .form-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">CarePlus Pharma · UI system</div>
+      <h1 class="page-title">Component library</h1>
+      <p class="page-sub">The raw ingredients behind every screen: warm canvas and coral accent, Plus Jakarta Sans, 16–30px radii, pill buttons, 1px warm borders and one soft shadow. The M3 lavender is reserved for navigation and search.</p>
+    </div>
+    <div class="board-tag">05 / 05</div>
+  </div>
+
+  <section class="board">
+    <div class="board-head">
+      <span class="board-index">08</span>
+      <span class="board-title">Tokens and controls</span>
+      <span class="board-tag">Shared</span>
+      <span class="board-note">Colour · type · buttons · inputs · badges · states</span>
+    </div>
+
+    <div class="lib">
+
+      <!-- Colour -->
+      <div class="spec-card span-2">
+        <div class="spec-head"><span class="h4">Colour</span><span class="tag">Warm expressive + M3</span></div>
+        <div class="swatches">
+          <div class="swatch"><div class="sw" style="background:#fdf7f2"></div><div class="sw-meta"><div class="sw-name">Canvas</div><div class="sw-hex">#FDF7F2</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#ffffff;border-bottom:1px solid #f0e6dc"></div><div class="sw-meta"><div class="sw-name">Card</div><div class="sw-hex">#FFFFFF</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#f1e6dc"></div><div class="sw-meta"><div class="sw-name">Border</div><div class="sw-hex">#F1E6DC</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#241d19"></div><div class="sw-meta"><div class="sw-name">Ink</div><div class="sw-hex">#241D19</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#e4553c"></div><div class="sw-meta"><div class="sw-name">Accent</div><div class="sw-hex">#E4553C</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#f9906f"></div><div class="sw-meta"><div class="sw-name">Accent soft</div><div class="sw-hex">#F9906F</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#7c63f2"></div><div class="sw-meta"><div class="sw-name">Violet</div><div class="sw-hex">#7C63F2</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#6750a4"></div><div class="sw-meta"><div class="sw-name">M3 primary</div><div class="sw-hex">#6750A4</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#4c8df6"></div><div class="sw-meta"><div class="sw-name">Blue</div><div class="sw-hex">#4C8DF6</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#2fae6e"></div><div class="sw-meta"><div class="sw-name">Green</div><div class="sw-hex">#2FAE6E</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#fce9e6"></div><div class="sw-meta"><div class="sw-name">Tint red</div><div class="sw-hex">#FCE9E6</div></div></div>
+          <div class="swatch"><div class="sw" style="background:#eee9fd"></div><div class="sw-meta"><div class="sw-name">Tint violet</div><div class="sw-hex">#EEE9FD</div></div></div>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="spec-card">
+        <div class="spec-head"><span class="h4">Typography</span><span class="tag">Plus Jakarta Sans</span></div>
+        <div class="type-row"><span style="font-size:29px;font-weight:800;letter-spacing:-.035em;line-height:1">Aa</span><span class="spec">Display · 29 / 800</span></div>
+        <div class="type-row"><span style="font-size:20px;font-weight:800;letter-spacing:-.025em">Page title</span><span class="spec">H2 · 20 / 800</span></div>
+        <div class="type-row"><span style="font-size:15px;font-weight:800">Section title</span><span class="spec">H3 · 15 / 800</span></div>
+        <div class="type-row"><span style="font-size:11.5px;font-weight:700">Body / control text</span><span class="spec">Body · 11.5 / 700</span></div>
+        <div class="type-row"><span style="font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Label</span><span class="spec">Label · 9.5 / 800</span></div>
+        <div class="type-row"><span style="font-size:23px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums">₹4,86,250</span><span class="spec">KPI · 23 / 800</span></div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="spec-card span-2">
+        <div class="spec-head"><span class="h4">Buttons</span><span class="tag">Pill · 38px</span></div>
+        <div class="btn-row">
+          <span class="btn primary"><i data-lucide="plus" class="i14"></i> Primary</span>
+          <span class="btn dark"><i data-lucide="download" class="i14"></i> Dark</span>
+          <span class="btn ghost"><i data-lucide="share-2" class="i14"></i> Ghost</span>
+          <span class="btn soft"><i data-lucide="sparkles" class="i14"></i> Soft</span>
+          <span class="btn danger"><i data-lucide="trash-2" class="i14"></i> Danger</span>
+        </div>
+        <div class="btn-row mt-10">
+          <span class="btn primary sm"><i data-lucide="check" class="i14"></i> Small</span>
+          <span class="btn ghost sm">Small ghost</span>
+          <span class="icon-round"><i data-lucide="share-2" class="i14"></i></span>
+          <span class="icon-round green"><i data-lucide="download" class="i14"></i></span>
+          <span class="icon-round red"><i data-lucide="trash-2" class="i14"></i></span>
+          <span class="pill-filter on">Filter</span>
+          <span class="pill-filter soft">Soft chip</span>
+          <span class="toggle"></span>
+          <span class="toggle off"></span>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="spec-card">
+        <div class="spec-head"><span class="h4">Status badges</span><span class="tag">9.5px · 800</span></div>
+        <div class="btn-row">
+          <span class="chip green"><i data-lucide="circle-check" class="i14"></i> Paid</span>
+          <span class="chip amber">Partial</span>
+          <span class="chip red">Overdue</span>
+          <span class="chip blue">Sent</span>
+          <span class="chip violet">Draft</span>
+          <span class="chip grey">Archived</span>
+        </div>
+        <div class="divider"></div>
+        <div class="flex between"><span class="tiny muted">Confidence</span><span class="chip green">100%</span></div>
+        <div class="progress mt-6"><i style="width:100%;background:var(--xp-green)"></i></div>
+        <div class="flex between mt-10"><span class="tiny muted">Stock cover</span><span class="chip amber">68%</span></div>
+        <div class="progress mt-6"><i style="width:68%"></i></div>
+        <div class="flex between mt-10"><span class="tiny muted">GST reconciled</span><span class="chip blue">96%</span></div>
+        <div class="progress mt-6"><i style="width:96%;background:var(--xp-blue)"></i></div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="spec-card span-2">
+        <div class="spec-head"><span class="h4">Inputs &amp; search</span><span class="tag">40px · 13px radius</span></div>
+        <div class="form-demo">
+          <div class="field"><label>Product name</label><div class="input"><span>DOLO 650 TAB</span></div></div>
+          <div class="field"><label>Batch number</label><div class="input focus"><span>DL26A</span><span style="width:1px;height:14px;background:var(--xp-accent)"></span></div></div>
+          <div class="field"><label>Expiry month</label><div class="input select"><span>08 / 2028</span></div></div>
+          <div class="field"><label>GST slab</label><div class="input select"><span>5% · CGST 2.5 + SGST 2.5</span></div></div>
+        </div>
+        <div class="searchbar mt-10" style="border-radius:13px"><i data-lucide="search" class="i16"></i> Search medicine name, salt or batch… <span class="micro" style="margin-left:auto;color:var(--muted);font-weight:800">⌘ K</span></div>
+        <div class="flex gap-6 mt-10">
+          <span class="segmented"><span class="on">All</span><span>Retail</span><span>Wholesale</span></span>
+          <span class="pill-filter">This month ⌄</span>
+          <span class="pill-filter"><i data-lucide="sliders-horizontal" class="i14"></i> Filters</span>
+        </div>
+      </div>
+
+      <!-- Icons -->
+      <div class="spec-card">
+        <div class="spec-head"><span class="h4">Line icons</span><span class="tag">Lucide · 1.75 stroke</span></div>
+        <div class="icon-set">
+          <span class="icon-tile"><i data-lucide="zap" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="users" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="truck" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="file-up" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="package" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="receipt-indian-rupee" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="chart-no-axes-column" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="settings-2" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="search" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="share-2" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="download" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="trash-2" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="circle-check" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="triangle-alert" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="clock-3" class="i16"></i></span>
+          <span class="icon-tile"><i data-lucide="sparkles" class="i16"></i></span>
+        </div>
+      </div>
+
+      <!-- Shape & elevation -->
+      <div class="spec-card">
+        <div class="spec-head"><span class="h4">Shape &amp; elevation</span><span class="tag">16–30px radii</span></div>
+        <div class="radius-demo">
+          <div class="radius-box" style="border-radius:10px">10</div>
+          <div class="radius-box" style="border-radius:16px">16</div>
+          <div class="radius-box" style="border-radius:20px">20</div>
+          <div class="radius-box" style="border-radius:26px">26</div>
+          <div class="radius-box" style="border-radius:30px">30</div>
+        </div>
+        <div class="shadow-demo mt-14">
+          <div class="shadow-box" style="box-shadow:0 10px 28px -24px rgba(88,51,30,.5)">card</div>
+          <div class="shadow-box" style="box-shadow:0 18px 40px -26px rgba(88,51,30,.6)">raised</div>
+          <div class="shadow-box" style="box-shadow:0 30px 64px -28px rgba(53,26,12,.55)">overlay</div>
+        </div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="spec-card span-2">
+        <div class="spec-head"><span class="h4">Feedback &amp; data display</span><span class="tag">Notes · pager · tooltip</span></div>
+        <div class="grid-2">
+          <div>
+            <div class="note-strip"><i data-lucide="triangle-alert" class="i14"></i> 12 batches expire within 90 days.</div>
+            <div class="note-strip info mt-6"><i data-lucide="info" class="i14"></i> Intra-state bill: CGST + SGST apply.</div>
+            <div class="note-strip ok mt-6"><i data-lucide="circle-check" class="i14"></i> PDF total matches the bill.</div>
+            <div class="mt-14">
+              <div class="flex between" style="margin-bottom:6px"><span class="tiny" style="font-weight:800">Parsing bill…</span><span class="micro muted">72%</span></div>
+              <div class="progress"><i style="width:72%"></i></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex gap-10" style="align-items:center">
+              <span class="tooltip">Rate per box <span style="opacity:.6">· ₹95.00</span></span>
+              <span class="pager">
+                <span class="box"><i data-lucide="chevron-left" class="i14"></i></span>
+                <span class="on">1</span><span>2</span><span>3</span>
+                <span class="box"><i data-lucide="chevron-right" class="i14"></i></span>
+              </span>
+            </div>
+            <div class="list-row mt-10">
+              <span class="avatar" style="background:var(--xp-tint-green);color:#1c8a54">SM</span>
+              <div style="flex:1;min-width:0"><div class="tiny" style="font-weight:800">Sharma Medical Store</div><div class="micro muted">Retail · Pune · ₹42,300 outstanding</div></div>
+              <span class="chip green">Active</span>
+            </div>
+            <div class="list-row">
+              <span class="avatar" style="background:var(--xp-tint-violet);color:#5b3fd1">LC</span>
+              <div style="flex:1;min-width:0"><div class="tiny" style="font-weight:800">Lifecare Chemist</div><div class="micro muted">Wholesale · Mumbai · ₹8,960 due</div></div>
+              <span class="chip amber">Follow up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+<script src="vendor/lucide.min.js"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
